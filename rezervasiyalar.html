@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rezervasiyalar - Stitch</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111417] dark:text-white font-display">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between border-b border-[#e5e7eb] dark:border-[#2b333b]">
+<div class="flex size-12 shrink-0 items-center justify-start cursor-pointer text-[#111417] dark:text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Rezervasiyalar</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full text-[#111417] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</div>
+</header>
+<!-- Calendar Section -->
+<section class="bg-white dark:bg-background-dark pb-4 shadow-sm z-40 rounded-b-xl">
+<div class="flex flex-col items-center justify-center gap-2 p-4">
+<!-- Month Navigator -->
+<div class="flex w-full items-center justify-between mb-2 px-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#111417] dark:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<p class="text-[#111417] dark:text-white text-base font-bold leading-tight">Oktyabr 2023</p>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-[#111417] dark:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+<!-- Calendar Grid -->
+<div class="w-full max-w-sm grid grid-cols-7 gap-y-1">
+<!-- Weekday Headers -->
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">B.e</p>
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">Ç.a</p>
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">Ç</p>
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">C.a</p>
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">C</p>
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">Ş</p>
+<p class="text-[#647587] dark:text-gray-400 text-xs font-bold flex h-8 w-full items-center justify-center">B</p>
+<!-- Days - Row 1 -->
+<!-- Empty padding for start of month (assuming starts on Sunday here for demo layout visual) -->
+<div class="col-span-6"></div>
+<button class="h-10 w-full flex items-center justify-center">
+<div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800">1</div>
+</button>
+<!-- Row 2 -->
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">2</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">3</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">4</div></button>
+<!-- Selected Date -->
+<button class="h-10 w-full flex items-center justify-center">
+<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white text-sm font-bold shadow-md shadow-primary/30">5</div>
+</button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">6</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">7</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">8</div></button>
+<!-- Row 3 -->
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">9</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">10</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">11</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">12</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">13</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">14</div></button>
+<button class="h-10 w-full flex items-center justify-center"><div class="flex size-8 items-center justify-center rounded-full text-[#111417] dark:text-white text-sm font-medium">15</div></button>
+</div>
+<!-- Expanded indicator -->
+<div class="w-full flex justify-center mt-2">
+<div class="h-1 w-12 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Orders List Section -->
+<main class="flex-1 px-0 pb-20">
+<!-- Section Header -->
+<div class="px-4 pt-6 pb-2 flex justify-between items-end">
+<h3 class="text-[#111417] dark:text-white text-lg font-bold leading-tight">5 Oktyabr üçün siyahı</h3>
+<span class="text-sm font-medium text-primary cursor-pointer hover:underline">Hamısına bax</span>
+</div>
+<div class="flex flex-col gap-3 px-4 mt-2">
+<!-- ListItem 1 -->
+<div class="group flex gap-4 bg-white dark:bg-[#1e2b3a] p-4 rounded-xl shadow-sm border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-[60px] w-[60px]" data-alt="Portrait of a smiling woman in business attire" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBP2Y1b7WYWGh1rE_tKYogXpTyPLUkg-l_OgN3qKagFMcIUMePE5XWiZaYwmgnhN3QpirIX3YPwm52-6uKB58LAN0GnAMuXM90c8pFMrywxzJsblqDmYhDDONqpS2AgQVlUPVFNM7nOllNs0ETUs6rqPQ9Cf3MoCC-LcqDxfPfAcLemWlZt3TWRjYw0qOnqS5tnHyKJPrZfbtlMkWoe-MUOSbaQ6OYzH7Qk53AkXwRoL79IV8jsA1kh14GlL5VaTk_9X4zz76uBm2E");'></div>
+<div class="absolute -bottom-1 -right-1 bg-green-500 border-2 border-white dark:border-[#1e2b3a] rounded-full p-0.5">
+<span class="material-symbols-outlined text-white text-[10px] block font-bold">check</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111417] dark:text-white text-base font-bold leading-tight">Aygün Məmmədova</h4>
+<span class="text-[#111417] dark:text-white font-mono text-sm font-semibold bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">14:00</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">Ölçü yoxlama</span>
+<span class="text-[#647587] dark:text-gray-400 text-xs flex items-center gap-1">
+                                • Ödənilib
+                             </span>
+</div>
+</div>
+<div class="flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+<!-- ListItem 2 -->
+<div class="group flex gap-4 bg-white dark:bg-[#1e2b3a] p-4 rounded-xl shadow-sm border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-[60px] w-[60px]" data-alt="Portrait of a man with glasses looking professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuArMCoRC2yZk9LGvjCL2rGwtehGjsFBfoAWjMXEZRUnVqeaZWWiQ1V908x2BVhrDOE2jg1VfaX2Ifn8PzJ6pU2wIS3b-e_jmx0YhrNG7eO0rq2FtFGKnwaHOFAd45YiVm2EMxbUfi5cUYatv0IbXAW209L94eqdWh3-7RO7g1Vkjzg5AOPg83LdeO71P38zj2vW0IZ-svMBNCjtirgN2CWZxWR5Or9vERWwMHeXWCcWmLNEkr_NpFcur6z395TQ5bCD7F0lhcNr3Is");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111417] dark:text-white text-base font-bold leading-tight">İlqar Əliyev</h4>
+<span class="text-[#111417] dark:text-white font-mono text-sm font-semibold bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">15:30</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">Ayırma</span>
+<span class="text-orange-600 dark:text-orange-400 text-xs flex items-center gap-1 font-medium">
+                                • Gözlənilir
+                             </span>
+</div>
+</div>
+<div class="flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+<!-- ListItem 3 -->
+<div class="group flex gap-4 bg-white dark:bg-[#1e2b3a] p-4 rounded-xl shadow-sm border border-transparent hover:border-primary/20 transition-all cursor-pointer opacity-75">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-[60px] w-[60px] grayscale" data-alt="Portrait of a young woman with a neutral expression" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAR0C5vV7PjvaU_Z-PJwJS0RtxvZ6ZELuDIqVmg66fZTviEANVjeBBCBRJ0WZ7d-_RZmij6WgfM4CEs3g8pi5F377wS-_odZAd_HWprPwSzlFNEQtjWdh5WP5s57DsPpsw_g_F6qbs7i1TGeRd9drAPcH7RGRYG4TkZIA9qxgXc0c_kr40jStQ20snsahEEQsYVUPhWfZsWcdf1Dt1Q2i91vFW04F52YHLq4zgcE8u1JxKo7KLd0UG_sl1tcvcENSwU599-8uPi854");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111417] dark:text-white text-base font-bold leading-tight line-through decoration-gray-400">Leyla Həsənova</h4>
+<span class="text-[#647587] dark:text-gray-500 font-mono text-sm font-semibold bg-gray-50 dark:bg-gray-800/50 px-2 py-0.5 rounded">16:45</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300">Konsultasiya</span>
+<span class="text-red-500 dark:text-red-400 text-xs flex items-center gap-1 font-medium">
+                                • Ləğv edilib
+                             </span>
+</div>
+</div>
+<div class="flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+<!-- ListItem 4 -->
+<div class="group flex gap-4 bg-white dark:bg-[#1e2b3a] p-4 rounded-xl shadow-sm border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<!-- Abstract placeholder for user without photo -->
+<div class="flex items-center justify-center bg-primary/10 rounded-full h-[60px] w-[60px]">
+<span class="text-primary font-bold text-xl">R</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex justify-between items-start">
+<h4 class="text-[#111417] dark:text-white text-base font-bold leading-tight">Rəşad Quliyev</h4>
+<span class="text-[#111417] dark:text-white font-mono text-sm font-semibold bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">17:15</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">Ölçü yoxlama</span>
+<span class="text-[#647587] dark:text-gray-400 text-xs flex items-center gap-1">
+                                • Ödənilib
+                             </span>
+</div>
+</div>
+<div class="flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button for Adding New Reservation -->
+<button class="fixed bottom-6 right-6 size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center hover:bg-blue-600 transition-colors z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</body></html>

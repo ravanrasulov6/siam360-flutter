@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Məhsullar və Anbar - Stitch</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Hide scrollbar for chrome/safari/opera */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-[#111417] dark:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-[80px]">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-20 flex items-center bg-surface-light dark:bg-surface-dark p-4 pb-2 justify-between border-b border-[#f0f2f4] dark:border-gray-800 shadow-sm">
+<div class="flex size-12 shrink-0 items-center justify-start text-[#111417] dark:text-white cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">
+                Məhsullar və Anbar
+            </h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg size-10 text-primary hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- SearchBar -->
+<div class="px-4 py-3 bg-surface-light dark:bg-surface-dark">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f0f2f4] dark:bg-gray-800 border border-transparent focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="text-[#647587] dark:text-gray-400 flex items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent text-[#111417] dark:text-white focus:outline-none h-full placeholder:text-[#647587] dark:placeholder:text-gray-500 px-3 text-base font-normal leading-normal border-none ring-0 focus:ring-0" placeholder="Məhsul axtar (kod, ad)..." value=""/>
+</div>
+</label>
+</div>
+<!-- Chips (Filters) -->
+<div class="bg-surface-light dark:bg-surface-dark pb-2">
+<div class="flex gap-3 px-4 py-2 overflow-x-auto no-scrollbar">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-[#dce0e5] dark:border-gray-700 bg-transparent px-4 active:bg-primary/10">
+<p class="text-[#111417] dark:text-gray-200 text-sm font-medium leading-normal">Ölçü</p>
+<span class="material-symbols-outlined text-[18px] text-[#111417] dark:text-gray-200">keyboard_arrow_down</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-[#dce0e5] dark:border-gray-700 bg-transparent px-4 active:bg-primary/10">
+<p class="text-[#111417] dark:text-gray-200 text-sm font-medium leading-normal">Rəng</p>
+<span class="material-symbols-outlined text-[18px] text-[#111417] dark:text-gray-200">keyboard_arrow_down</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-[#dce0e5] dark:border-gray-700 bg-transparent px-4 active:bg-primary/10">
+<p class="text-[#111417] dark:text-gray-200 text-sm font-medium leading-normal">Satılmayan məhsullar</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-[#dce0e5] dark:border-gray-700 bg-transparent px-4 active:bg-primary/10">
+<p class="text-[#111417] dark:text-gray-200 text-sm font-medium leading-normal">Kateqoriya</p>
+<span class="material-symbols-outlined text-[18px] text-[#111417] dark:text-gray-200">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+<!-- Table Header (Visual Guide) -->
+<div class="px-4 py-2 mt-2 grid grid-cols-[1fr_auto] gap-4 text-xs font-semibold text-[#647587] dark:text-gray-400 uppercase tracking-wider">
+<div>Məhsul / Variant</div>
+<div class="text-right">Stok / Qiymət</div>
+</div>
+<!-- DescriptionList (Data Table) -->
+<div class="flex flex-col bg-surface-light dark:bg-surface-dark shadow-sm">
+<!-- Item 1 -->
+<div class="group relative flex items-center justify-between gap-4 p-4 border-b border-[#f0f2f4] dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<!-- Product Image Placeholder -->
+<div class="h-12 w-12 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 bg-cover bg-center flex items-center justify-center text-gray-400" data-alt="Folded white t-shirt on a minimal background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBueyLhJVDhB451A4jnZYU6BJQFj_SkTu9O1ECGWrwzA7REnyjzVT07zN2py2E3JxhhxjZ1JVNVMh-cVwmfTYxaPDm_jhI-tLhPdBMq-nMvnaOBb8XMIurMLk2-Nio1N2R9AmOrkBsYL_S5MVt4KIC-GAz5s-L1XGymD99z6_MVBwj5uVGgeBlYIn99TZSrhhHap9dN34XV9zxAOd6w5fI4J77DmG7Hupvds2IOvmEgnOIE8FRgqCumJ7_d4RaNdOuPGZKnsLX_uSQ');">
+</div>
+<div class="flex flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-tight truncate">Ağ Köynək</p>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-normal mt-0.5">S / M • Pambıq</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">Aktiv</span>
+<p class="text-[#111417] dark:text-white text-base font-bold">₼25.00</p>
+</div>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-medium">12 ədəd</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative flex items-center justify-between gap-4 p-4 border-b border-[#f0f2f4] dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="h-12 w-12 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 bg-cover bg-center" data-alt="Detail shot of blue denim jeans texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1loP_craBfQi6hMSHBm2nkbqucfIMTZbqF7tbLyPWRyT7oSzX2SW0_asHOq2MsGlHZt73ekj_Yll853bO21zqvOLnSC04WHSZJEgOmi1kzNto15B-y2IMGAeEhVdtnJW5bzgxUHLq1fAjy1TFOzbKbD-z3BVcP1IZ5n9M2WkjLhljSMvDmV4VcLfMc8ejk3HRcIXTj8qArlhwdE6L8D7L6Q-VuZB4EDqJ0LwCtNinGs7pdpT6nAmi-_8DJ2jh-WiwpL5siW6uzNc');">
+</div>
+<div class="flex flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-tight truncate">Cins Şalvar (Mavi)</p>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-normal mt-0.5">32/34 • Slim Fit</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-orange-50 dark:bg-orange-900/30 px-2 py-0.5 text-xs font-medium text-orange-700 dark:text-orange-400 ring-1 ring-inset ring-orange-600/20">Bitir</span>
+<p class="text-[#111417] dark:text-white text-base font-bold">₼45.00</p>
+</div>
+<p class="text-orange-600 dark:text-orange-400 text-sm font-bold">5 ədəd</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative flex items-center justify-between gap-4 p-4 border-b border-[#f0f2f4] dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="h-12 w-12 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 bg-cover bg-center" data-alt="Elegant black dress fabric texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzofMWznziLwFeCGOaZsUPaMI0M642l_mJVazmomPqHcFZToEipHYh6MFUz7rDR6ZDjfLpNMwT_rdXreQVIF0KGawc2rQD2BMCxbuGns_pxqu_uz_PMwUDONmUma6ZToEXUkBu6_5327N6RnzGE8ALIQAgpEy-QHZ-l70rGL8SnNo153HbJfNqT55zcJmGy1GOT3lys9siB7EntJQCASmGjLzhEhVAU8zXV3nejBIM_BVRdUPtThu9kUXX3dScaiLjGZFuyTx_QkM');">
+</div>
+<div class="flex flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-tight truncate">Qara Don</p>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-normal mt-0.5">M • Ziyafət</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">Aktiv</span>
+<p class="text-[#111417] dark:text-white text-base font-bold">₼60.00</p>
+</div>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-medium">8 ədəd</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group relative flex items-center justify-between gap-4 p-4 border-b border-[#f0f2f4] dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="h-12 w-12 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 bg-cover bg-center" data-alt="Close up of red knitted sweater texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvw4Y1pZpRmSn6of4_BzUGjy5_AwKAnAslx22_4GfXrjFb3YLRZtsS9Sm6iSerdrFJTZjFujAzU0QcQtk3jp_OaTNwfKniAIfoHWCn8_m93fzA3-PLk3G3YaxBeNPLg4g-M9m1KuDN4fvcSWp1eJtTgUTYs2LluyTfsFy1ZrQw7IdBv_PcO9RLBG0r5FLhJhwlOFTW8YjIThw72haoNjHNMovdu2punI2L7Da_Givbd-wuizehd5JE7SRtlCQN_ALkyTDv6k-yVA0');">
+</div>
+<div class="flex flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-tight truncate">Qırmızı Sviter</p>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-normal mt-0.5">L • Yun</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-red-50 dark:bg-red-900/30 px-2 py-0.5 text-xs font-medium text-red-700 dark:text-red-400 ring-1 ring-inset ring-red-600/20">Bitir</span>
+<p class="text-[#111417] dark:text-white text-base font-bold">₼35.00</p>
+</div>
+<p class="text-red-600 dark:text-red-400 text-sm font-bold">2 ədəd</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="group relative flex items-center justify-between gap-4 p-4 border-b border-[#f0f2f4] dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="h-12 w-12 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 bg-cover bg-center" data-alt="Patterned silk scarf texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvUzHpWC_qg30F_StSIueSPLd13HVZ9MHhiL0SIPBtgH9t3NzZWxJTN8IJDayG6HIydXg3RYV5bJhzKpF2fq9buH5QAYRE9WlthzVG2-xhteWCNO4OHKCfnybFHT3Nwb6QRWhiDiNKFpGjiL0-Gm1BUfJRFNNHi1mGTJM6FWqpf_KXKd8arEIwPiaDry7YezGhcSEn4UlPijcwgnMWUYeFwPGjaq4EU20phbz6F8SCs9ig6vRozNaXwBLBH7Cj21bVumXxIfK_a5Y');">
+</div>
+<div class="flex flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-tight truncate">İpək Şərf</p>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-normal mt-0.5">One Size • İpək</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">Aktiv</span>
+<p class="text-[#111417] dark:text-white text-base font-bold">₼15.00</p>
+</div>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-medium">20 ədəd</p>
+</div>
+</div>
+<!-- Item 6 (Extra for scroll) -->
+<div class="group relative flex items-center justify-between gap-4 p-4 border-b border-[#f0f2f4] dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="h-12 w-12 shrink-0 rounded-lg bg-gray-100 dark:bg-gray-700 bg-cover bg-center" data-alt="Beige linen jacket texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfU7lkZG4EYzXPFHoQrrQsyjVomYjWnRnlISIXPiQ5QcJfhQbLMl-_AchO2dPFMzDm6tFXRmkRDAW3BJv_fS4W_lXhh48N7l9Nf-9dXiEqqJAMq5aDQpQfFKtgwBS4NFhuqLlKX6DdlhFrT3tF89OyHmNDDS77UtFtCZ0cmcESOfKq3fzQX-8PxL6EoGiNv2ayx9P__S3pN_hfATV0H1orXaSQxO14v2_WCvMtMuwRNA0q2rdFwD6X68MGjEiwFirXMSajM0NhuXk');">
+</div>
+<div class="flex flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-tight truncate">Kətan Pencək</p>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-normal mt-0.5">XL • Bej</p>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">Aktiv</span>
+<p class="text-[#111417] dark:text-white text-base font-bold">₼85.00</p>
+</div>
+<p class="text-[#647587] dark:text-gray-400 text-sm font-medium">15 ədəd</p>
+</div>
+</div>
+</div>
+<!-- Spacer for Bottom Nav -->
+<div class="h-16"></div>
+</div>
+<!-- BottomNavBar -->
+<div class="fixed bottom-0 left-0 right-0 z-50 flex gap-2 border-t border-[#f0f2f4] dark:border-gray-800 bg-surface-light dark:bg-surface-dark px-4 pb-safe pt-2 shadow-[0_-2px_10px_rgba(0,0,0,0.03)] dark:shadow-none pb-4">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#647587] dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Ana səhifə</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<!-- Filled icon for active state -->
+<span class="material-symbols-outlined fill">inventory_2</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Məhsullar</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#647587] dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Sifarişlər</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#647587] dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profil</p>
+</a>
+</div>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Qeydiyyat - Biznes Həcmi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .radio-custom-dot {
+            --radio-dot-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%23207fdf%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-[430px] mx-auto bg-white dark:bg-background-dark shadow-xl overflow-x-hidden">
+<div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-[#111417] dark:text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Qeydiyyat</h2>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-[#111417] dark:text-white text-base font-medium leading-normal">Son mərhələ</p>
+<p class="text-[#111417] dark:text-white text-sm font-normal leading-normal">4/4</p>
+</div>
+<div class="rounded-full bg-[#dce0e5] dark:bg-gray-700 h-2">
+<div class="h-2 rounded-full bg-primary" style="width: 100%;"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#111417] dark:text-white tracking-light text-2xl font-bold leading-tight px-4 text-left pb-2 pt-5">
+                Aylıq satış həcminiz nə qədərdir?
+            </h3>
+<p class="text-[#64748b] dark:text-gray-400 text-base font-normal leading-normal pb-6 pt-1 px-4">
+                Bu məlumat sizə uyğun paneli hazırlamaq üçün lazımdır
+            </p>
+</div>
+<div class="flex flex-col gap-3 p-4 radio-custom-dot">
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#dce0e5] dark:border-gray-700 p-4 flex-row-reverse cursor-pointer hover:border-primary transition-colors group">
+<input checked="" class="h-5 w-5 border-2 border-[#dce0e5] dark:border-gray-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="volume" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-normal">100 - 500 AZN</p>
+</div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#dce0e5] dark:border-gray-700 p-4 flex-row-reverse cursor-pointer hover:border-primary transition-colors group">
+<input class="h-5 w-5 border-2 border-[#dce0e5] dark:border-gray-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="volume" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-normal">500 - 1000 AZN</p>
+</div>
+</label>
+<label class="flex items-center gap-4 rounded-xl border border-solid border-[#dce0e5] dark:border-gray-700 p-4 flex-row-reverse cursor-pointer hover:border-primary transition-colors group">
+<input class="h-5 w-5 border-2 border-[#dce0e5] dark:border-gray-600 bg-transparent text-transparent checked:border-primary checked:bg-[image:--radio-dot-svg] focus:outline-none focus:ring-0 focus:ring-offset-0 checked:focus:border-primary" name="volume" type="radio"/>
+<div class="flex grow flex-col">
+<p class="text-[#111417] dark:text-white text-base font-semibold leading-normal">1000+ AZN</p>
+</div>
+</label>
+</div>
+<div class="mt-auto p-4 mb-6">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg active:scale-[0.98]">
+                Tamamla
+            </button>
+</div>
+<div class="flex justify-center pb-2">
+<div class="w-32 h-1 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
+</div>
+</div>
+</body></html>

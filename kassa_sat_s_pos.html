@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch POS - Kassa Satışı</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for clean look */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white h-screen overflow-hidden flex flex-col lg:flex-row">
+<!-- LEFT SIDE / TOP SIDE: Product Catalog -->
+<div class="flex-1 flex flex-col h-[60%] lg:h-full min-h-0 relative z-0">
+<!-- Top App Bar -->
+<div class="flex items-center bg-surface-light dark:bg-surface-dark px-4 py-3 justify-between shadow-sm z-10">
+<div class="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center lg:text-left lg:pl-4">Kassa Satışı</h2>
+<div class="flex items-center justify-end gap-2">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Area -->
+<div class="bg-surface-light dark:bg-surface-dark px-4 py-2 pb-3 border-b border-slate-100 dark:border-slate-800">
+<!-- Search Bar -->
+<label class="flex flex-col w-full mb-3">
+<div class="flex w-full items-stretch rounded-lg h-10 bg-background-light dark:bg-background-dark">
+<div class="text-slate-500 flex items-center justify-center pl-3 pr-2">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 bg-transparent border-none text-slate-900 dark:text-white focus:ring-0 placeholder:text-slate-500 text-sm font-normal" placeholder="Məhsul adı, kod və ya barkod..."/>
+</div>
+</label>
+<!-- Chips -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-medium transition-colors">
+                    Bütün
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium transition-colors">
+                    Kişi
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium transition-colors">
+                    Qadın
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium transition-colors">
+                    Uşaq
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center px-4 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-medium transition-colors">
+                    Aksessuar
+                </button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="flex-1 overflow-y-auto p-4 bg-background-light dark:bg-background-dark">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+<!-- Product 1 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 active:scale-95 transition-transform cursor-pointer">
+<div class="w-full aspect-square bg-slate-200 relative">
+<div class="w-full h-full bg-center bg-cover" data-alt="White basic t-shirt on grey background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATYFq8u8txAzHqTpQWvmbBfp5gje7rqQviMOpCkpcSstFWt4noeXEqbuiRi2fXIJZUqWiJjyvjGagHJ-FCmvBBuiV-s5uIQBVakhaZmOqI7RCwACSy_K1eOWwqMjvKuuMXY7rcJYyQwZQRGHB2NM7DSAj9doVkcPtNHDopQLZXLu0QtkKevDT9aPgyG56EoS8a0mDptp4rTVINYBAZ1LjV8eLrZNuMBG3cC1suxkrjGV80kR5mvXnp7aOhBKlcS28SJQZ2XTravMg");'></div>
+<div class="absolute bottom-2 right-2 bg-white dark:bg-slate-900 rounded-full p-1 shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm text-primary">add</span>
+</div>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold leading-tight mb-1 truncate">Basic T-shirt</p>
+<p class="text-slate-500 text-xs mb-2">S, M, L, XL</p>
+<div class="flex items-center justify-between">
+<p class="text-primary font-bold text-sm">15.00 ₼</p>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-black border border-slate-300"></div>
+<div class="w-2 h-2 rounded-full bg-white border border-slate-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 active:scale-95 transition-transform cursor-pointer">
+<div class="w-full aspect-square bg-slate-200">
+<div class="w-full h-full bg-center bg-cover" data-alt="Blue denim jeans folded" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKE01ldmxYYcYx9qX0d3NomxwAw6R-7NoE7ziSNXN6My6wS1hW-XM6fWDjJdRbY2vEcY7eo8KhwdT7Yy7gvbpdpUU0RZsiOlEQxrWC04zgxmK-7cs-sMqoBCWap0TxnUu34Q0OqmvIk4O8IY1z7RAS551fx3R3UFQ4TaTkleeLtlM0qev6gZW9-QAmD4H7pw7oudnFuCSx_qJtxXV8tKl_-Ovxf_fsHr56CtwjhXlBHZaTWEiVv2Mmd6YH2PauALlWZr0k8j5LtD4");'></div>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold leading-tight mb-1 truncate">Slim Fit Cins</p>
+<p class="text-slate-500 text-xs mb-2">30, 32, 34</p>
+<div class="flex items-center justify-between">
+<p class="text-primary font-bold text-sm">45.00 ₼</p>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-blue-800 border border-slate-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 active:scale-95 transition-transform cursor-pointer">
+<div class="w-full aspect-square bg-slate-200">
+<div class="w-full h-full bg-center bg-cover" data-alt="Beige linen shirt hanging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBY51oFMsrLSzZwuJEY2Sw6EZEaT--q89cWEwAvkshy_DR7bhwJtjBaD8rhLLzvhfTA_dG04wnmV_bRVyVsa6tKdEJJMlYGD2pGnXK16W1phqyhGCjf-B254SC0em5ag6d9IzT0Jzk3PixwOQ36dTVR20KYYXojazKjieFQh_Qexu8qQ1_a5uyLVYWvrsPHb_KnVSJfB2EqRqpBwR0QrHuYwftkMRXStOfP6XAQodwg3Qb7xfXFgBqwk-UJcrrviygc0p9Jsku8t1E");'></div>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold leading-tight mb-1 truncate">Kətan Köynək</p>
+<p class="text-slate-500 text-xs mb-2">M, L, XL</p>
+<div class="flex items-center justify-between">
+<p class="text-primary font-bold text-sm">35.00 ₼</p>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-[#d2b48c] border border-slate-300"></div>
+<div class="w-2 h-2 rounded-full bg-white border border-slate-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 active:scale-95 transition-transform cursor-pointer">
+<div class="w-full aspect-square bg-slate-200">
+<div class="w-full h-full bg-center bg-cover" data-alt="Grey sweatpants" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdgGMCQopB6E-xBFjeAnV0-yfufQEEEAY5NO3gBs0Fc69D6bLI0iAa4Fkse4mEQh23uJDUBWMuXpLPK23PINdNaKHzoA1iI7XgfYDzTBKEPvqa1N4DCmrkJEvzJ7IJdyIPQsBxAnyH3lzLiBvcRX0jAgz4EG3RciGcix8_Uu_3H-60bYxIOzXT6SasD__CUnsK5emTA0H7KZhfmK3-GkxoEUiljdYRHC_YxJkDb0UDXHI-AtkESb7BvCkrQm73VROU4U-Q1OrvEFI");'></div>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold leading-tight mb-1 truncate">İdman Şalvarı</p>
+<p class="text-slate-500 text-xs mb-2">S, M, L</p>
+<div class="flex items-center justify-between">
+<p class="text-primary font-bold text-sm">28.00 ₼</p>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-gray-400 border border-slate-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 5 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 active:scale-95 transition-transform cursor-pointer">
+<div class="w-full aspect-square bg-slate-200">
+<div class="w-full h-full bg-center bg-cover" data-alt="White sneakers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnyOIVioD8Nllbg16hwtv97EeDU0IIgPE8OSg0DL21gcnfgucluc2FBSyptThYn9SpapWv1SVLHG7ZZV4sTqLebYgbjA474iY4yBiPBw_YA_xC4h_3Jx2hMWRD2bwyMi4M_g2uZG_6hmRWnSgtdQjEEDVcux2LwafLlXEqibjiE-yBnNm0B9K1S09-YcijPwrAwoiaGPicqvVcT7vMZ9B0Yac5MVy87NUCFY1RbaL6pKTWuGH6sk1RrkVUmjjuHV_nbY3WcvoWrBk");'></div>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold leading-tight mb-1 truncate">Ağ Kedlər</p>
+<p class="text-slate-500 text-xs mb-2">36-45</p>
+<div class="flex items-center justify-between">
+<p class="text-primary font-bold text-sm">65.00 ₼</p>
+</div>
+</div>
+</div>
+<!-- Product 6 -->
+<div class="group relative flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 active:scale-95 transition-transform cursor-pointer">
+<div class="w-full aspect-square bg-slate-200">
+<div class="w-full h-full bg-center bg-cover" data-alt="Black leather belt" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIedXXZ7CFilZ-6kyvfUpdTlhcqzb6bNKLBjWgeXIJYr-ydpa2HQJGVmaICeva8XsUX__KJlRKmakcYu7Lxhkq8xCIo02m5a8pRTPFLoV3glrVZRXHQZ1G-TmeMtL33rNODIsm4d_mUTDRksnMf3vW4urRtr55cOO6iCft4syhTLdF67dWiiQvPuKVfI5UCAdeeRU0aSjxYSKLlVjQVDNTz6N_n5OsMmtagiB1UOFrWoUbmnQJ2ks7Z8-JjA6v64E-S4yFWsPKmWc");'></div>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-white text-sm font-semibold leading-tight mb-1 truncate">Dəri Kəmər</p>
+<p class="text-slate-500 text-xs mb-2">Standart</p>
+<div class="flex items-center justify-between">
+<p class="text-primary font-bold text-sm">22.00 ₼</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT SIDE / BOTTOM SIDE: Cart (Səbət) -->
+<!-- On mobile: 40% height. On Desktop: 400px width -->
+<div class="h-[40%] lg:h-full lg:w-[400px] bg-surface-light dark:bg-surface-dark border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-700 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] lg:shadow-none flex flex-col z-20">
+<!-- Cart Header -->
+<div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-slate-800 shrink-0">
+<div class="flex items-center gap-2">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Səbət</h3>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+</div>
+<button class="text-slate-500 hover:text-red-500 text-sm font-medium transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                Təmizlə
+            </button>
+</div>
+<!-- Cart Items List -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+<!-- Cart Item 1 -->
+<div class="flex gap-3 items-start animate-fade-in">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 bg-center bg-cover" data-alt="Basic T-shirt small thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLnyq6pXr7WZ6V9SoTCUliBbvRLF1b0AFiXojHd_1O5fTHc4YuUsVSnfXcbsvrkS2PdHeu0h5QEqQgZjT6MhvdfbVkKiZlgX24loQj6XouCFNM6Ri4uyNarxfEQ0eaPhrOHDPrXJWxUN6a3VMwb9OyntBgilIqihhJI2X3x08FwP9J7m8qjK24ghqv48Q9q0wV_gtv9GgckGPcoiDdpmZ1dwDiUgpLcteyqhuzJwr6434GXeCDNc-mKAwaoBIvndgb_tTh4RC5AWo");'></div>
+<div class="flex-1 flex flex-col justify-between min-h-[64px]">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-medium line-clamp-1">Basic T-shirt</p>
+<p class="text-slate-500 text-xs">Qara, M</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">30.00 ₼</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-background-light dark:bg-background-dark rounded-md border border-slate-200 dark:border-slate-700 h-7">
+<button class="w-7 h-full flex items-center justify-center text-slate-500 hover:text-primary active:bg-slate-200 dark:active:bg-slate-600 rounded-l-md">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-8 text-center text-sm font-medium text-slate-900 dark:text-white">2</span>
+<button class="w-7 h-full flex items-center justify-center text-slate-500 hover:text-primary active:bg-slate-200 dark:active:bg-slate-600 rounded-r-md">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<!-- Optional item discount or remove action can go here -->
+</div>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="flex gap-3 items-start">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 bg-center bg-cover" data-alt="Slim Fit Jeans small thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqeDUHBTbuSSS2PVUcKhqAGZHOwc2fRfcNn7hVqIfqhWfQEalG8mIQaDHnBmlfpmM1Nf9TFxNW_M6AO3lB-NF1x-Wj4uvPehkNGtMaM_VUhGYobMImvLqRQhsNAKz5wgGadMQdl-8nuCZxngnRqgJYHkupP4gwXBlTJTG4ORWhdzRSXiE6dmmraPa6W9R6E-BEbmCFQHpmL9aWv2Ln4L3lK-uBe9HT7ZJV8qovFou1y6Z3dES5k_gdmyYODNmoLHbgzThAKdGEa0c");'></div>
+<div class="flex-1 flex flex-col justify-between min-h-[64px]">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-medium line-clamp-1">Slim Fit Cins</p>
+<p class="text-slate-500 text-xs">Göy, 32</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">45.00 ₼</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-background-light dark:bg-background-dark rounded-md border border-slate-200 dark:border-slate-700 h-7">
+<button class="w-7 h-full flex items-center justify-center text-slate-500 hover:text-primary active:bg-slate-200 dark:active:bg-slate-600 rounded-l-md">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-8 text-center text-sm font-medium text-slate-900 dark:text-white">1</span>
+<button class="w-7 h-full flex items-center justify-center text-slate-500 hover:text-primary active:bg-slate-200 dark:active:bg-slate-600 rounded-r-md">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Cart Item 3 -->
+<div class="flex gap-3 items-start opacity-70">
+<div class="w-16 h-16 rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 bg-center bg-cover" data-alt="Socks small thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgYJhIhFMsCCWWy9xqSlXeq9EXv4Or2hDWK2vvX7XdxQvswd3qGKM5Q-ULVvI7uQCg9h6FDOXtuc0VajpjZBHzVPnegyryMu3rGg0b2vr3RO3bQQniahHG8jJ3qKOD6hnB-Z0ydw90Kyp33sYeKTCE7lBis-xn_9NAT8N7yhqc3NQQ15s86nDOZXr7qzJWTgpsEAX_CK_QmY-lGQHIcPlE5DJJksyrzi-xr_2oIo3AyHxx1yT6Xq01_naeKkpsm0tk8OQOY6awPYg");'></div>
+<div class="flex-1 flex flex-col justify-between min-h-[64px]">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-medium line-clamp-1">Corab dəsti (3-lü)</p>
+<p class="text-slate-500 text-xs">Ağ, Standart</p>
+</div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">12.00 ₼</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-background-light dark:bg-background-dark rounded-md border border-slate-200 dark:border-slate-700 h-7">
+<button class="w-7 h-full flex items-center justify-center text-slate-500 hover:text-primary active:bg-slate-200 dark:active:bg-slate-600 rounded-l-md">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-8 text-center text-sm font-medium text-slate-900 dark:text-white">1</span>
+<button class="w-7 h-full flex items-center justify-center text-slate-500 hover:text-primary active:bg-slate-200 dark:active:bg-slate-600 rounded-r-md">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary & Checkout Footer -->
+<div class="bg-white dark:bg-surface-dark p-4 pt-2 border-t border-slate-100 dark:border-slate-800 shrink-0">
+<!-- Discount Input Toggle -->
+<div class="flex items-center justify-between mb-3 text-sm">
+<button class="text-primary flex items-center gap-1 font-medium hover:underline">
+<span class="material-symbols-outlined text-[18px]">percent</span>
+                    Endirim tətbiq et
+                </button>
+<span class="text-slate-500">Müştəri: Seçilməyib</span>
+</div>
+<!-- Totals -->
+<div class="flex flex-col gap-1 mb-4">
+<div class="flex justify-between text-sm text-slate-500">
+<span>Məbləğ</span>
+<span>87.00 ₼</span>
+</div>
+<div class="flex justify-between text-sm text-green-600 font-medium">
+<span>Endirim</span>
+<span>-0.00 ₼</span>
+</div>
+<div class="flex justify-between text-lg font-bold text-slate-900 dark:text-white mt-1 pt-2 border-t border-dashed border-slate-200 dark:border-slate-700">
+<span>Yekun</span>
+<span>87.00 ₼</span>
+</div>
+</div>
+<!-- Main Action Button -->
+<button class="w-full h-12 bg-primary hover:bg-blue-600 text-white font-bold rounded-lg shadow-lg shadow-blue-500/30 active:scale-[0.98] transition-all flex items-center justify-between px-4">
+<span>Satışı tamamla</span>
+<div class="flex items-center gap-2">
+<span class="opacity-80 font-normal border-r border-white/30 pr-3 mr-1 text-sm">Nağd</span>
+<span>87.00 ₼</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+</body></html>

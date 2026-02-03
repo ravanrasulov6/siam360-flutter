@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex justify-center">
+<div class="relative flex h-full min-h-screen w-full max-w-[430px] flex-col bg-white dark:bg-background-dark overflow-x-hidden shadow-2xl">
+<div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-[#111417] dark:text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Qeydiyyat</h2>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-[#111417] dark:text-white text-base font-medium leading-normal">Təsdiqləmə</p>
+<p class="text-[#111417] dark:text-white text-sm font-normal leading-normal">2/4</p>
+</div>
+<div class="rounded-full bg-[#dce0e5] dark:bg-gray-700 h-2">
+<div class="h-2 rounded-full bg-primary" style="width: 50%;"></div>
+</div>
+</div>
+<div class="px-4">
+<h3 class="text-[#111417] dark:text-white tracking-light text-2xl font-bold leading-tight text-left pb-2 pt-5">Nömrənin təsdiqlənməsi</h3>
+<p class="text-[#64748b] dark:text-gray-400 text-base font-normal leading-normal pb-6 pt-1">
+                Zəhmət olmasa mobil nömrənizə göndərilən 6 rəqəmli kodu daxil edin.
+            </p>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex justify-center px-4 py-3">
+<fieldset class="relative flex gap-2 sm:gap-4">
+<input class="flex h-14 w-11 sm:w-12 text-center border-0 border-b-2 border-[#dce0e5] dark:border-gray-700 bg-transparent text-[#111417] dark:text-white text-xl font-bold focus:ring-0 focus:border-primary transition-colors" inputmode="numeric" max="9" maxlength="1" type="text"/>
+<input class="flex h-14 w-11 sm:w-12 text-center border-0 border-b-2 border-[#dce0e5] dark:border-gray-700 bg-transparent text-[#111417] dark:text-white text-xl font-bold focus:ring-0 focus:border-primary transition-colors" inputmode="numeric" max="9" maxlength="1" type="text"/>
+<input class="flex h-14 w-11 sm:w-12 text-center border-0 border-b-2 border-[#dce0e5] dark:border-gray-700 bg-transparent text-[#111417] dark:text-white text-xl font-bold focus:ring-0 focus:border-primary transition-colors" inputmode="numeric" max="9" maxlength="1" type="text"/>
+<input class="flex h-14 w-11 sm:w-12 text-center border-0 border-b-2 border-[#dce0e5] dark:border-gray-700 bg-transparent text-[#111417] dark:text-white text-xl font-bold focus:ring-0 focus:border-primary transition-colors" inputmode="numeric" max="9" maxlength="1" type="text"/>
+<input class="flex h-14 w-11 sm:w-12 text-center border-0 border-b-2 border-[#dce0e5] dark:border-gray-700 bg-transparent text-[#111417] dark:text-white text-xl font-bold focus:ring-0 focus:border-primary transition-colors" inputmode="numeric" max="9" maxlength="1" type="text"/>
+<input class="flex h-14 w-11 sm:w-12 text-center border-0 border-b-2 border-[#dce0e5] dark:border-gray-700 bg-transparent text-[#111417] dark:text-white text-xl font-bold focus:ring-0 focus:border-primary transition-colors" inputmode="numeric" max="9" maxlength="1" type="text"/>
+</fieldset>
+</div>
+<div class="flex flex-col items-center gap-4 px-4">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-primary/90 transition-all">
+                    Təsdiqlə
+                </button>
+<div class="flex flex-col items-center gap-2">
+<p class="text-[#64748b] dark:text-gray-400 text-sm">Kod gəlmədi?</p>
+<button class="text-primary font-semibold text-sm hover:underline">
+                        Yenidən göndər
+                    </button>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 flex justify-center">
+<div class="h-1.5 w-32 bg-gray-300 dark:bg-gray-700 rounded-full"></div>
+</div>
+</div>
+</body></html>

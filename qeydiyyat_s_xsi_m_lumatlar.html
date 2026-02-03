@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Qeydiyyat - Stitch</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-100 dark:border-gray-800">
+<span class="material-symbols-outlined text-[#111417] dark:text-white cursor-pointer">arrow_back_ios</span>
+<h2 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Qeydiyyat</h2>
+<div class="w-6"></div>
+</div>
+<!-- ProgressBar -->
+<div class="flex flex-col gap-3 p-6 bg-white dark:bg-background-dark">
+<div class="flex gap-6 justify-between">
+<p class="text-[#111417] dark:text-white text-base font-medium leading-normal">Şəxsi Məlumatlar</p>
+<p class="text-[#111417] dark:text-white text-sm font-normal leading-normal">1/4</p>
+</div>
+<div class="rounded-full bg-[#dce0e5] dark:bg-gray-700 h-2 w-full">
+<div class="h-2 rounded-full bg-primary" style="width: 25%;"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col items-center px-4 pt-8 max-w-md mx-auto w-full">
+<!-- HeadlineText -->
+<div class="w-full">
+<h3 class="text-[#111417] dark:text-white tracking-light text-2xl font-bold leading-tight text-center pb-2">Xoş gəlmisiniz</h3>
+<!-- BodyText -->
+<p class="text-[#647587] dark:text-gray-400 text-base font-normal leading-normal pb-8 text-center">Zəhmət olmasa şəxsi məlumatlarınızı daxil edin</p>
+</div>
+<!-- Form Fields -->
+<div class="w-full flex flex-col gap-2">
+<!-- TextField: Name -->
+<div class="flex flex-col w-full">
+<label class="flex flex-col w-full">
+<p class="text-[#111417] dark:text-white text-sm font-medium leading-normal pb-2">Adınız</p>
+<input class="form-input flex w-full rounded-xl text-[#111417] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 placeholder:text-[#647587] p-[15px] text-base font-normal leading-normal" placeholder="Adınızı daxil edin" type="text"/>
+</label>
+</div>
+<!-- TextField: Surname -->
+<div class="flex flex-col w-full pt-4">
+<label class="flex flex-col w-full">
+<p class="text-[#111417] dark:text-white text-sm font-medium leading-normal pb-2">Soyadınız</p>
+<input class="form-input flex w-full rounded-xl text-[#111417] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 placeholder:text-[#647587] p-[15px] text-base font-normal leading-normal" placeholder="Soyadınızı daxil edin" type="text"/>
+</label>
+</div>
+<!-- TextField: Phone -->
+<div class="flex flex-col w-full pt-4 pb-8">
+<label class="flex flex-col w-full">
+<p class="text-[#111417] dark:text-white text-sm font-medium leading-normal pb-2">Əlaqə nömrəsi</p>
+<div class="relative">
+<input class="form-input flex w-full rounded-xl text-[#111417] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 placeholder:text-[#647587] pl-12 p-[15px] text-base font-normal leading-normal" placeholder="+994 (__) ___-__-__" type="tel"/>
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[#647587] text-xl">call</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Primary Button -->
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2">
+<span>Növbəti</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<p class="text-center text-[#647587] text-sm mt-6">
+                    Hesabınız var? <a class="text-primary font-semibold" href="#">Daxil olun</a>
+</p>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="mt-auto pb-10 flex justify-center">
+<div class="w-32 h-1 bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+</div>
+</div>
+</body></html>

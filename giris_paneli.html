@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Giriş Paneli - Stitch</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111417] dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-4 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button aria-label="Geriyə" class="flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[#111417] dark:text-white" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Stitch</h2>
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-1 flex-col justify-center px-4 pb-10 pt-4 sm:px-6 lg:px-8 max-w-md mx-auto w-full">
+<!-- Headline & Subtext -->
+<div class="mb-8 text-center">
+<h1 class="text-[28px] font-bold leading-tight tracking-tight text-[#111417] dark:text-white mb-3">
+                    Biznesini bir yerdən idarə et
+                </h1>
+<p class="text-base font-normal leading-normal text-[#647587] dark:text-gray-400">
+                    Satış, anbar, rezervasiya və sifarişlər — hamısı sadə formada
+                </p>
+</div>
+<!-- Login Form -->
+<form action="#" class="flex flex-col gap-5" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="flex flex-col gap-2">
+<label class="text-base font-medium leading-normal text-[#111417] dark:text-gray-200" for="email">
+                        E-poçt
+                    </label>
+<div class="relative">
+<input class="form-input flex w-full min-w-0 resize-none overflow-hidden rounded-xl border border-[#dce0e5] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111417] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 focus:border-primary h-14 placeholder:text-[#9aa2ac] dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal transition-all" id="email" placeholder="name@example.com" type="email" value=""/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-2">
+<label class="text-base font-medium leading-normal text-[#111417] dark:text-gray-200" for="password">
+                        Şifrə
+                    </label>
+<div class="relative flex items-center">
+<input class="form-input flex w-full min-w-0 resize-none overflow-hidden rounded-xl border border-[#dce0e5] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111417] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 focus:border-primary h-14 placeholder:text-[#9aa2ac] dark:placeholder:text-gray-500 pl-[15px] pr-12 text-base font-normal leading-normal transition-all" id="password" placeholder="••••••••" type="password" value=""/>
+<button aria-label="Şifrəni göstər" class="absolute right-0 top-0 bottom-0 px-4 flex items-center justify-center text-[#647587] dark:text-gray-400 hover:text-[#111417] dark:hover:text-white transition-colors" type="button">
+<span class="material-symbols-outlined" style="font-size: 24px;">visibility_off</span>
+</button>
+</div>
+<div class="flex justify-end pt-1">
+<a class="text-sm font-medium text-primary hover:text-blue-600 transition-colors" href="#">
+                            Şifrəni unutmusan?
+                        </a>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal tracking-[0.015em] shadow-sm hover:shadow-md transition-all active:scale-[0.98]">
+<span class="truncate">Daxil ol</span>
+</button>
+</div>
+</form>
+<!-- Footer / Sign Up Link -->
+<div class="mt-8 text-center">
+<p class="text-base text-[#647587] dark:text-gray-400">
+                    Hesabın yoxdur? 
+                    <a class="font-bold text-primary hover:text-blue-600 ml-1 transition-colors" href="#">
+                        Qeydiyyatdan keç
+                    </a>
+</p>
+</div>
+<!-- Safe Area Bottom Spacer -->
+<div class="h-10"></div>
+</div>
+</div>
+</body></html>

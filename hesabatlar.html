@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hesabatlar - Stitch</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1A2633",
+                        "border-light": "#dce0e5",
+                        "border-dark": "#2d3b4a",
+                        "text-main-light": "#111417",
+                        "text-main-dark": "#ffffff",
+                        "text-sub-light": "#647587",
+                        "text-sub-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto border-x border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark shadow-xl">
+<!-- Top App Bar -->
+<div class="flex items-center justify-between bg-surface-light dark:bg-surface-dark p-4 pb-2 sticky top-0 z-10 border-b border-border-light dark:border-border-dark">
+<div class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</div>
+<h2 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Hesabatlar</h2>
+<div class="flex size-12 items-center justify-center">
+<button class="flex items-center justify-center bg-transparent text-text-main-light dark:text-text-main-dark p-0">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="bg-surface-light dark:bg-surface-dark pt-1 pb-0">
+<div class="flex border-b border-border-light dark:border-border-dark px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-sub-light dark:text-text-sub-dark hover:text-primary dark:hover:text-primary pb-[13px] pt-4 flex-1 transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Gündəlik</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-sub-light dark:text-text-sub-dark hover:text-primary dark:hover:text-primary pb-[13px] pt-4 flex-1 transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Həftəlik</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-text-main-light dark:text-text-main-dark pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em] text-primary">Aylıq</p>
+</a>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex flex-col gap-3 p-4">
+<!-- Section 1: Best Selling Products -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-border-light dark:border-border-dark">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight tracking-[-0.015em]">Ən çox satılan məhsullar</h3>
+<span class="material-symbols-outlined text-text-sub-light dark:text-text-sub-dark text-xl">more_horiz</span>
+</div>
+<div class="flex flex-col gap-1 mb-6">
+<p class="text-text-sub-light dark:text-text-sub-dark text-sm font-medium">Ümumi satış</p>
+<div class="flex items-end gap-2">
+<p class="text-text-main-light dark:text-text-main-dark text-[32px] font-bold leading-tight">₼12,450</p>
+<div class="flex items-center gap-1 mb-2 bg-green-100 dark:bg-green-900/30 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">trending_up</span>
+<p class="text-green-700 dark:text-green-400 text-xs font-bold">+12%</p>
+</div>
+</div>
+</div>
+<div class="grid gap-x-4 gap-y-4 grid-cols-[auto_1fr] items-center">
+<!-- Item 1 -->
+<div class="flex flex-col">
+<p class="text-text-main-light dark:text-text-main-dark text-[13px] font-bold">Qara Köynək</p>
+<p class="text-text-sub-light dark:text-text-sub-dark text-[11px]">₼3,200</p>
+</div>
+<div class="h-8 flex-1 flex items-center">
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col">
+<p class="text-text-main-light dark:text-text-main-dark text-[13px] font-bold">Cins Şalvar</p>
+<p class="text-text-sub-light dark:text-text-sub-dark text-[11px]">₼2,850</p>
+</div>
+<div class="h-8 flex-1 flex items-center">
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2 overflow-hidden">
+<div class="bg-blue-400 h-full rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col">
+<p class="text-text-main-light dark:text-text-main-dark text-[13px] font-bold">Ağ Don</p>
+<p class="text-text-sub-light dark:text-text-sub-dark text-[11px]">₼1,900</p>
+</div>
+<div class="h-8 flex-1 flex items-center">
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2 overflow-hidden">
+<div class="bg-blue-300 h-full rounded-full" style="width: 45%;"></div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col">
+<p class="text-text-main-light dark:text-text-main-dark text-[13px] font-bold">Gödəkcə</p>
+<p class="text-text-sub-light dark:text-text-sub-dark text-[11px]">₼950</p>
+</div>
+<div class="h-8 flex-1 flex items-center">
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2 overflow-hidden">
+<div class="bg-blue-200 h-full rounded-full" style="width: 25%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Two Column Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<!-- Section 2: Sales by Size (Donut) -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-border-light dark:border-border-dark flex flex-col">
+<h3 class="text-text-main-light dark:text-text-main-dark text-base font-bold mb-4">Ölçü üzrə satışlar</h3>
+<div class="flex items-center justify-between">
+<!-- Donut Chart simulated with conic gradient -->
+<div class="relative size-24 rounded-full flex items-center justify-center" style="background: conic-gradient(#207fdf 0% 35%, #60a5fa 35% 60%, #93c5fd 60% 80%, #e2e8f0 80% 100%);">
+<div class="size-16 bg-surface-light dark:bg-surface-dark rounded-full flex items-center justify-center">
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark">Ümumi</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-medium text-text-sub-light dark:text-text-sub-dark">M (35%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-blue-400"></div>
+<span class="text-xs font-medium text-text-sub-light dark:text-text-sub-dark">L (25%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-blue-300"></div>
+<span class="text-xs font-medium text-text-sub-light dark:text-text-sub-dark">S (20%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-slate-200"></div>
+<span class="text-xs font-medium text-text-sub-light dark:text-text-sub-dark">Digər (20%)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Conversion Rate -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-border-light dark:border-border-dark flex flex-col justify-between">
+<h3 class="text-text-main-light dark:text-text-main-dark text-base font-bold mb-2">Ayırma → Satış</h3>
+<div class="flex flex-col gap-1 mt-2">
+<div class="flex items-end gap-2">
+<span class="text-4xl font-bold text-primary">68%</span>
+</div>
+<p class="text-sm text-text-sub-light dark:text-text-sub-dark leading-snug">
+                            Keçən aya nisbətən <span class="text-green-600 dark:text-green-400 font-bold">+4%</span> artım müşahidə olunur.
+                        </p>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2 mt-4 overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-blue-300 h-full rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+<!-- Section 4: Return Reasons -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-border-light dark:border-border-dark">
+<h3 class="text-text-main-light dark:text-text-main-dark text-lg font-bold leading-tight mb-4">Qaytarma səbəbləri</h3>
+<div class="flex flex-col gap-4">
+<!-- Reason 1 -->
+<div class="group">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Ölçü uyğun gəlmədi</span>
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark">42%</span>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-1.5 overflow-hidden">
+<div class="bg-red-400 h-full rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Reason 2 -->
+<div class="group">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Məhsul zədələnmişdi</span>
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark">18%</span>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-1.5 overflow-hidden">
+<div class="bg-orange-400 h-full rounded-full" style="width: 18%;"></div>
+</div>
+</div>
+<!-- Reason 3 -->
+<div class="group">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Rəng fərqli idi</span>
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark">12%</span>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-1.5 overflow-hidden">
+<div class="bg-yellow-400 h-full rounded-full" style="width: 12%;"></div>
+</div>
+</div>
+<!-- Reason 4 -->
+<div class="group">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark">Digər</span>
+<span class="text-xs font-bold text-text-sub-light dark:text-text-sub-dark">28%</span>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-1.5 overflow-hidden">
+<div class="bg-slate-300 dark:bg-slate-600 h-full rounded-full" style="width: 28%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="h-6"></div> <!-- Bottom spacer -->
+</div>
+</div>
+<!-- Data-alt attributes for background images or complex visuals not directly accessible -->
+<script>
+        // No heavy images used, mostly CSS gradients and colors as requested by 'Minimal' style.
+        // If there were any, I would ensure data-alt is set.
+    </script>
+</body></html>

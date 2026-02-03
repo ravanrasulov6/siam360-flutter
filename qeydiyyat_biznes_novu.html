@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#207fdf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Qeydiyyat - Biznes Növü</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111417] dark:text-white transition-colors duration-200">
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-[#1a242d]">
+<!-- TopAppBar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-[#111417] dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Qeydiyyat</h2>
+</div>
+<!-- ProgressBar -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-[#111417] dark:text-white/80 text-base font-medium leading-normal">Addım 3</p>
+<p class="text-[#111417] dark:text-white/60 text-sm font-normal leading-normal">3/4</p>
+</div>
+<div class="rounded-full bg-[#dce0e5] dark:bg-gray-700">
+<div class="h-2 rounded-full bg-primary" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Headline & Body -->
+<div class="px-4">
+<h2 class="text-[#111417] dark:text-white tracking-light text-[28px] font-bold leading-tight pb-2 pt-5">Biznes növünü seçin</h2>
+<p class="text-[#111417] dark:text-white/70 text-base font-normal leading-normal pb-6">Sizə daha yaxşı təcrübə təqdim etmək üçün fəaliyyət sahənizi qeyd edin.</p>
+</div>
+<!-- Section Header -->
+<div class="px-4">
+<h3 class="text-[#111417] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pb-4">Fəaliyyət növü</h3>
+</div>
+<!-- Selection Grid -->
+<div class="grid grid-cols-2 gap-4 px-4 pb-8">
+<!-- Option 1 -->
+<div class="flex flex-col items-center justify-center p-6 border-2 border-primary bg-primary/5 rounded-xl transition-all">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded-full mb-3">
+<span class="material-symbols-outlined text-white">apparel</span>
+</div>
+<span class="text-[#111417] dark:text-white font-semibold text-center text-sm">Geyim mağazası</span>
+</div>
+<!-- Option 2 -->
+<div class="flex flex-col items-center justify-center p-6 border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 rounded-xl transition-all hover:border-primary/50">
+<div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 flex items-center justify-center rounded-full mb-3">
+<span class="material-symbols-outlined text-[#111417] dark:text-white">content_cut</span>
+</div>
+<span class="text-[#111417] dark:text-white font-semibold text-center text-sm">Gözəllik salonu</span>
+</div>
+<!-- Option 3 -->
+<div class="flex flex-col items-center justify-center p-6 border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 rounded-xl transition-all hover:border-primary/50">
+<div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 flex items-center justify-center rounded-full mb-3">
+<span class="material-symbols-outlined text-[#111417] dark:text-white">restaurant</span>
+</div>
+<span class="text-[#111417] dark:text-white font-semibold text-center text-sm">Kafe / Restoran</span>
+</div>
+<!-- Option 4 -->
+<div class="flex flex-col items-center justify-center p-6 border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800 rounded-xl transition-all hover:border-primary/50">
+<div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 flex items-center justify-center rounded-full mb-3">
+<span class="material-symbols-outlined text-[#111417] dark:text-white">build</span>
+</div>
+<span class="text-[#111417] dark:text-white font-semibold text-center text-sm">Xidmət mərkəzi</span>
+</div>
+</div>
+<!-- Sticky Bottom Button -->
+<div class="mt-auto p-4 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-[#1a242d]">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+                Davam et
+            </button>
+</div>
+</div>
+</body></html>
