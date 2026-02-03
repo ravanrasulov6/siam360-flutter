@@ -91,7 +91,9 @@ class _ReservationsScreenState extends ConsumerState<ReservationsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: _days.map((i) {
                   final date = DateTime.now().add(Duration(days: i - 1));
-                  final isSelected = i == 1;
+                  final isSelected = date.day == _selectedDate.day && 
+                                     date.month == _selectedDate.month && 
+                                     date.year == _selectedDate.year;
                   final dayNames = ['B', 'E', 'Ç', 'Ç', 'C', 'C', 'B'];
                   
                   return GestureDetector(

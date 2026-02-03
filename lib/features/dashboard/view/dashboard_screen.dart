@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siam360/app/theme/app_colors.dart';
 import 'package:siam360/shared/widgets/stat_card.dart';
-import 'package:siam360/shared/widgets/section_header.dart';
 
 /// Dashboard screen - main panel
 class DashboardScreen extends StatelessWidget {
