@@ -8,303 +8,347 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Welcome section
+              const Text(
+                'Xoş gəlmisiniz, Kamran 👋',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Baxış paneli icmalı',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              
+              const SizedBox(height: 32),
+              
+              // Stats Grid
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final isDesktop = constraints.maxWidth > 900;
+                  final isTablet = constraints.maxWidth > 600;
+                  final crossAxisCount = isDesktop ? 4 : (isTablet ? 2 : 2);
+                  
+                  return GridView.count(
+                    crossAxisCount: crossAxisCount,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    childAspectRatio: isDesktop ? 1.6 : 1.3,
+                    children: const [
+                      StatCard(
+                        title: 'Bugünkü satış',
+                        value: '254 ₼',
+                        change: '+12%',
+                        isPositive: true,
+                        icon: Icons.payments_outlined,
+                        iconColor: AppColors.primary,
+                        iconBackgroundColor: Color(0xFFE3F2FD),
+                      ),
+                      StatCard(
+                        title: 'Bu ay gəlir',
+                        value: '12,450 ₼',
+                        change: '+5%',
+                        isPositive: true,
+                        icon: Icons.calendar_month_outlined,
+                        iconColor: Color(0xFF6366F1),
+                        iconBackgroundColor: Color(0xFFE0E7FF),
+                      ),
+                      StatCard(
+                        title: 'Aktiv rezerv.',
+                        value: '8',
+                        icon: Icons.event_available_outlined,
+                        iconColor: Color(0xFFF97316),
+                        iconBackgroundColor: Color(0xFFFFF7ED),
+                      ),
+                      StatCard(
+                        title: 'Stokda azalan',
+                        value: '3 məhsul',
+                        change: '-2',
+                        isPositive: false,
+                        icon: Icons.inventory_2_outlined,
+                        iconColor: AppColors.error,
+                        iconBackgroundColor: Color(0xFFFEE2E2),
+                      ),
+                    ],
+                  );
+                },
+              ),
+              
+              const SizedBox(height: 40),
+              
+              // Second row: Chart and Side Info
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final isDesktop = constraints.maxWidth > 900;
+                  
+                  if (isDesktop) {
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(flex: 2, child: _buildChartSection()),
+                        const SizedBox(width: 24),
+                        Expanded(flex: 1, child: _buildComparisonSection()),
+                      ],
+                    );
+                  }
+                  
+                  return Column(
+                    children: [
+                      _buildChartSection(),
+                      const SizedBox(height: 32),
+                      _buildComparisonSection(),
+                    ],
+                  );
+                },
+              ),
+              
+              const SizedBox(height: 32),
+              
+              // Recent Activity
+              _buildActivitySection(),
+              
+              const SizedBox(height: 32),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildChartSection() {
+    return Container(
       padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceLight,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.borderLight),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Welcome section
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Satış statistikası',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundLight,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      'Həftəlik',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primary,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Icon(
+                      Icons.expand_more,
+                      size: 18,
+                      color: AppColors.primary,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
           const Text(
-            'Xoş gəlmisiniz, Kamran 👋',
+            '254 ₼',
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 32,
               fontWeight: FontWeight.bold,
               color: AppColors.textPrimary,
             ),
           ),
-          const SizedBox(height: 4),
-          Text(
-            'Baxış paneli icmalı',
-            style: TextStyle(
-              fontSize: 14,
-              color: AppColors.textSecondary,
-            ),
-          ),
-          
-          const SizedBox(height: 24),
-          
-          // Stats Grid
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
-              return GridView.count(
-                crossAxisCount: crossAxisCount,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                childAspectRatio: 1.3,
-                children: const [
-                  StatCard(
-                    title: 'Bugünkü satış',
-                    value: '254 ₼',
-                    change: '+12%',
-                    isPositive: true,
-                    icon: Icons.payments_outlined,
-                    iconColor: AppColors.primary,
-                    iconBackgroundColor: Color(0xFFE3F2FD),
-                  ),
-                  StatCard(
-                    title: 'Bu ay gəlir',
-                    value: '12,450 ₼',
-                    change: '+5%',
-                    isPositive: true,
-                    icon: Icons.calendar_month_outlined,
-                    iconColor: Color(0xFF6366F1),
-                    iconBackgroundColor: Color(0xFFE0E7FF),
-                  ),
-                  StatCard(
-                    title: 'Aktiv rezerv.',
-                    value: '8',
-                    icon: Icons.event_available_outlined,
-                    iconColor: Color(0xFFF97316),
-                    iconBackgroundColor: Color(0xFFFFF7ED),
-                  ),
-                  StatCard(
-                    title: 'Stokda azalan',
-                    value: '3 məhsul',
-                    change: '-2',
-                    isPositive: false,
-                    icon: Icons.inventory_2_outlined,
-                    iconColor: AppColors.error,
-                    iconBackgroundColor: Color(0xFFFEE2E2),
-                  ),
-                ],
-              );
-            },
-          ),
-          
-          const SizedBox(height: 32),
-          
-          // Sales Chart Section
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceLight,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderLight),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Satış statistikası',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: AppColors.backgroundLight,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Həftəlik',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.primary,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                          Icon(
-                            Icons.expand_more,
-                            size: 18,
-                            color: AppColors.primary,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+          Row(
+            children: [
+              Text(
+                'Gündəlik Satışlar',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: AppColors.textSecondary,
                 ),
-                const SizedBox(height: 16),
-                const Text(
-                  '254 ₼',
+              ),
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                decoration: BoxDecoration(
+                  color: AppColors.successLight,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const Text(
+                  '+12%',
                   style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.success,
                   ),
                 ),
-                Row(
-                  children: [
-                    Text(
-                      'Gündəlik Satışlar',
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          // Simple chart placeholder
+          SizedBox(
+            height: 180,
+            child: CustomPaint(
+              size: const Size(double.infinity, 180),
+              painter: _ChartPainter(),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: ['B', 'E', 'Ç', 'Ç', 'C', 'C', 'B']
+                .map((day) => Text(
+                      day,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
                         color: AppColors.textSecondary,
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: AppColors.successLight,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: const Text(
-                        '+12%',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.success,
-                        ),
-                      ),
-                    ),
-                  ],
+                    ))
+                .toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildComparisonSection() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceLight,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.borderLight),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Müqayisə',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
                 ),
-                const SizedBox(height: 24),
-                // Simple chart placeholder
-                SizedBox(
-                  height: 150,
-                  child: CustomPaint(
-                    size: const Size(double.infinity, 150),
-                    painter: _ChartPainter(),
-                  ),
+              ),
+              Row(
+                children: [
+                  _legendItem('Satış', AppColors.primary),
+                  const SizedBox(width: 12),
+                  _legendItem('Rez', AppColors.gray300),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          _comparisonRow('Geyim', 0.68),
+          const SizedBox(height: 16),
+          _comparisonRow('Aksesuar', 0.45),
+          const SizedBox(height: 16),
+          _comparisonRow('Elektron.', 0.20),
+          const SizedBox(height: 24),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                side: const BorderSide(color: AppColors.borderLight),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: ['B', 'E', 'Ç', 'Ç', 'C', 'C', 'B']
-                      .map((day) => Text(
-                            day,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textSecondary,
-                            ),
-                          ))
-                      .toList(),
+              ),
+              child: const Text(
+                'Tam hesabat',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
                 ),
-              ],
+              ),
             ),
           ),
-          
-          const SizedBox(height: 32),
-          
-          // Comparison Section
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceLight,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderLight),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Müqayisə',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        _legendItem('Satış', AppColors.primary),
-                        const SizedBox(width: 16),
-                        _legendItem('Rezerv.', AppColors.gray300),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                _comparisonRow('Geyim', 0.68),
-                const SizedBox(height: 16),
-                _comparisonRow('Aksesuarlar', 0.45),
-                const SizedBox(height: 16),
-                _comparisonRow('Elektronika', 0.20),
-                const SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      side: const BorderSide(color: AppColors.borderLight),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const Text(
-                      'Tam hesabatı göstər',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActivitySection() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceLight,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.borderLight),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Son Əməliyyatlar',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textPrimary,
             ),
           ),
-          
-          const SizedBox(height: 32),
-          
-          // Recent Activity
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceLight,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.borderLight),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Son Əməliyyatlar',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                _activityItem(
-                  icon: Icons.shopping_bag,
-                  iconColor: AppColors.success,
-                  iconBgColor: const Color(0xFFDCFCE7),
-                  title: 'Məhsul satışı',
-                  subtitle: 'Bu gün, 14:30',
-                  trailing: '+45.00 ₼',
-                ),
-                const Divider(height: 24),
-                _activityItem(
-                  icon: Icons.event_seat,
-                  iconColor: AppColors.primary,
-                  iconBgColor: const Color(0xFFDBEAFE),
-                  title: 'Yeni rezervasiya',
-                  subtitle: 'Dünən, 18:15',
-                  trailing: 'Kənan A.',
-                ),
-              ],
-            ),
+          const SizedBox(height: 16),
+          _activityItem(
+            icon: Icons.shopping_bag,
+            iconColor: AppColors.success,
+            iconBgColor: const Color(0xFFDCFCE7),
+            title: 'Məhsul satışı',
+            subtitle: 'Bu gün, 14:30',
+            trailing: '+45.00 ₼',
           ),
+          const Divider(height: 24),
+          _activityItem(
+            icon: Icons.event_seat,
+            iconColor: AppColors.primary,
+            iconBgColor: const Color(0xFFDBEAFE),
+            title: 'Yeni rezervasiya',
+            subtitle: 'Dünən, 18:15',
+            trailing: 'Kənan A.',
+          ),
+        ],
+      ),
+    );
+  }
           
           const SizedBox(height: 24),
         ],
