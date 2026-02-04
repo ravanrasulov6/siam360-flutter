@@ -50,7 +50,7 @@ class DashboardScreen extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     childAspectRatio: isDesktop ? 1.6 : 1.3,
-                    children: const [
+                    children: [
                       StatCard(
                         title: 'Bugünkü satış',
                         value: '254 ₼',
@@ -221,7 +221,7 @@ class DashboardScreen extends StatelessWidget {
           SizedBox(
             height: 180,
             child: CustomPaint(
-              size: const Size(double.infinity, 180),
+              size: Size(double.infinity, 180),
               painter: _ChartPainter(),
             ),
           ),
@@ -282,7 +282,7 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: 16),
           _comparisonRow('Elektron.', 0.20),
           const SizedBox(height: 24),
-          SizedBox(
+          Container(
             width: double.infinity,
             child: OutlinedButton(
               onPressed: () {},
@@ -345,12 +345,6 @@ class DashboardScreen extends StatelessWidget {
             subtitle: 'Dünən, 18:15',
             trailing: 'Kənan A.',
           ),
-        ],
-      ),
-    );
-  }
-          
-          const SizedBox(height: 24),
         ],
       ),
     );

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:siam360/app/router.dart';
 import 'package:siam360/app/theme/app_colors.dart';
-import 'package:siam360/shared/widgets/buttons.dart';
+import 'package:siam360/shared/widgets/onboarding_progress_bar.dart';
 
-/// Registration step 2 - OTP verification
+/// Registration step 2 - OTP verification (Premium Redesign)
 class RegisterVerifyScreen extends StatefulWidget {
   const RegisterVerifyScreen({super.key});
 
@@ -42,188 +43,199 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.backgroundLight,
       body: SafeArea(
         child: Column(
           children: [
-            // Top bar
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            // Top Navigation Header
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 children: [
                   IconButton(
                     onPressed: () => context.pop(),
-                    icon: const Icon(Icons.arrow_back_ios),
+                    icon: const Icon(Icons.arrow_back_ios_new, size: 20),
                     color: AppColors.textPrimary,
                   ),
-                  const Expanded(
-                    child: Text(
-                      'Qeydiyyat',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
+                  const Spacer(),
+                  Text(
+                    'Qeydiyyat',
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
                     ),
                   ),
-                  const SizedBox(width: 48),
+                  const Spacer(),
+                  const SizedBox(width: 40),
                 ],
               ),
             ),
             
-            // Progress bar
+            // Progress Section
             Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Təsdiqləmə',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      Text(
-                        '2/4',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: LinearProgressIndicator(
-                      value: 0.5,
-                      backgroundColor: AppColors.gray200,
-                      valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
-                      minHeight: 8,
-                    ),
-                  ),
-                ],
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: OnboardingProgressBar(
+                progress: 0.5,
+                stepText: 'Təsdiqləmə',
+                currentStep: '2/4',
               ),
             ),
             
             // Content
             Expanded(
-              child: Padding(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 32),
-                    const Text(
-                      'Nömrənin təsdiqlənməsi',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Zəhmət olmasa mobil nömrənizə göndərilən 6 rəqəmli kodu daxil edin.',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                    
-                    const SizedBox(height: 40),
-                    
-                    // OTP input
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(6, (index) {
-                        return Container(
-                          width: 48,
-                          margin: const EdgeInsets.symmetric(horizontal: 4),
-                          child: TextField(
-                            controller: _controllers[index],
-                            focusNode: _focusNodes[index],
-                            textAlign: TextAlign.center,
-                            keyboardType: TextInputType.number,
-                            maxLength: 1,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textPrimary,
-                            ),
-                            decoration: InputDecoration(
-                              counterText: '',
-                              border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: AppColors.borderLight,
-                                  width: 2,
-                                ),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: AppColors.borderLight,
-                                  width: 2,
-                                ),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: AppColors.primary,
-                                  width: 2,
-                                ),
-                              ),
-                            ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            onChanged: (value) => _onCodeChanged(index, value),
-                          ),
-                        );
-                      }),
-                    ),
-                    
-                    const SizedBox(height: 40),
-                    
-                    // Verify button
-                    PrimaryButton(
-                      label: 'Təsdiqlə',
-                      onPressed: () => context.push(AppRoutes.registerBusinessType),
-                    ),
-                    
-                    const SizedBox(height: 24),
-                    
-                    // Resend
-                    Column(
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        const SizedBox(height: 32),
                         Text(
-                          'Kod gəlmədi?',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.textSecondary,
+                          'Nömrənin təsdiqlənməsi',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.textPrimary,
+                            letterSpacing: -0.5,
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'Yenidən göndər',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.primary,
+                        const SizedBox(height: 12),
+                        Text(
+                          'Zəhmət olmasa mobil nömrənizə göndərilən 6 rəqəmli kodu daxil edin.',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 16,
+                            color: AppColors.textSecondary,
+                            height: 1.5,
+                          ),
+                        ),
+                        
+                        const SizedBox(height: 56),
+                        
+                        // OTP input fields
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(6, (index) {
+                            return _buildOtpField(index);
+                          }),
+                        ),
+                        
+                        const SizedBox(height: 56),
+                        
+                        // Action Button
+                        ElevatedButton(
+                          onPressed: () => context.push(AppRoutes.registerBusinessType),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 18),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            elevation: 0,
+                          ),
+                          child: Text(
+                            'Təsdiqlə',
+                            style: GoogleFonts.inter(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
+                        
+                        const SizedBox(height: 32),
+                        
+                        // Resend Section
+                        Column(
+                          children: [
+                            Text(
+                              'Kod gəlmədi?',
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                color: AppColors.textSecondary,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            TextButton(
+                              onPressed: () {
+                                // Logic for resend
+                              },
+                              style: TextButton.styleFrom(
+                                foregroundColor: AppColors.primary,
+                                padding: EdgeInsets.zero,
+                              ),
+                              child: Text(
+                                'Yenidən göndər',
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 32),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOtpField(int index) {
+    return Container(
+      width: 52,
+      height: 64,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: _focusNodes[index].hasFocus ? AppColors.primary : AppColors.borderLight,
+          width: _focusNodes[index].hasFocus ? 2 : 1.5,
+        ),
+        boxShadow: _focusNodes[index].hasFocus 
+            ? [
+                BoxShadow(
+                  color: AppColors.primary.withOpacity(0.15),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                )
+              ]
+            : null,
+      ),
+      child: Center(
+        child: TextField(
+          controller: _controllers[index],
+          focusNode: _focusNodes[index],
+          textAlign: TextAlign.center,
+          keyboardType: TextInputType.number,
+          maxLength: 1,
+          style: GoogleFonts.inter(
+            fontSize: 24,
+            fontWeight: FontWeight.w800,
+            color: AppColors.textPrimary,
+          ),
+          decoration: const InputDecoration(
+            counterText: '',
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.zero,
+          ),
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly,
+          ],
+          onChanged: (value) {
+            _onCodeChanged(index, value);
+            setState(() {}); // Trigger rebuild to update border color/shadow
+          },
         ),
       ),
     );

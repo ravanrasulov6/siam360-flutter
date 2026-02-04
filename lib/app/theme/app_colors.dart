@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 
-/// App color palette - extracted from HTML design
+/// App color palette - premium, modern, and confidence-building
 class AppColors {
   AppColors._();
   
-  // Primary
-  static const Color primary = Color(0xFF207FDF);
-  static const Color primaryLight = Color(0xFF60A5FA);
-  static const Color primaryDark = Color(0xFF1E6ABF);
+  // Primary - Modern, desaturated blue
+  static const Color primary = Color(0xFF2563EB); // Modern Blue
+  static const Color primaryLight = Color(0xFFDBEAFE);
+  static const Color primaryDark = Color(0xFF1E40AF);
   
-  // Background
-  static const Color backgroundLight = Color(0xFFF6F7F8);
-  static const Color backgroundDark = Color(0xFF111921);
+  // Background - Soft neutral
+  static const Color backgroundLight = Color(0xFFF8FAFC);
+  static const Color backgroundDark = Color(0xFF0F172A);
   
   // Surface
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color surfaceDark = Color(0xFF1A2632);
+  static const Color surfaceDark = Color(0xFF1E293B);
   
   // Text
-  static const Color textPrimary = Color(0xFF111417);
-  static const Color textSecondary = Color(0xFF647587);
-  static const Color textTertiary = Color(0xFF9AA2AC);
+  static const Color textPrimary = Color(0xFF0F172A); // Slate 900
+  static const Color textSecondary = Color(0xFF475569); // Slate 600
+  static const Color textTertiary = Color(0xFF94A3B8); // Slate 400
   
   // Border
-  static const Color borderLight = Color(0xFFDCE0E5);
-  static const Color borderDark = Color(0xFF2D3B4A);
+  static const Color borderLight = Color(0xFFE2E8F0); // Slate 200
+  static const Color borderDark = Color(0xFF334155); // Slate 700
   
   // Status Colors
-  static const Color success = Color(0xFF078838);
-  static const Color successLight = Color(0xFFDCFCE7);
+  static const Color success = Color(0xFF10B981);
+  static const Color successLight = Color(0xFFD1FAE5);
   static const Color warning = Color(0xFFF59E0B);
   static const Color warningLight = Color(0xFFFEF3C7);
-  static const Color error = Color(0xFFE73908);
+  static const Color error = Color(0xFFEF4444);
   static const Color errorLight = Color(0xFFFEE2E2);
   static const Color info = Color(0xFF3B82F6);
   static const Color infoLight = Color(0xFFDBEAFE);
@@ -43,8 +43,4 @@ class AppColors {
   static const Color gray300 = Color(0xFFD1D5DB);
   static const Color gray400 = Color(0xFF9CA3AF);
   static const Color gray500 = Color(0xFF6B7280);
-  static const Color gray600 = Color(0xFF4B5563);
-  static const Color gray700 = Color(0xFF374151);
-  static const Color gray800 = Color(0xFF1F2937);
-  static const Color gray900 = Color(0xFF111827);
 }

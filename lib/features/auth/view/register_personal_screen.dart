@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:siam360/app/router.dart';
 import 'package:siam360/app/theme/app_colors.dart';
-import 'package:siam360/shared/widgets/buttons.dart';
+import 'package:siam360/shared/widgets/onboarding_progress_bar.dart';
 
-/// Registration step 1 - Personal information
+/// Registration step 1 - Personal information (Premium Redesign)
 class RegisterPersonalScreen extends StatefulWidget {
   const RegisterPersonalScreen({super.key});
 
@@ -32,172 +33,155 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Top bar
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  bottom: BorderSide(color: AppColors.borderLight),
-                ),
-              ),
+            // Top Navigation Header
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 children: [
                   IconButton(
                     onPressed: () => context.pop(),
-                    icon: const Icon(Icons.arrow_back_ios),
+                    icon: const Icon(Icons.arrow_back_ios_new, size: 20),
                     color: AppColors.textPrimary,
                   ),
-                  const Expanded(
-                    child: Text(
-                      'Qeydiyyat',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                      ),
+                  const Spacer(),
+                  Text(
+                    'Qeydiyyat',
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
                     ),
                   ),
-                  const SizedBox(width: 48),
+                  const Spacer(),
+                  const SizedBox(width: 40), // Empty space to balance the back button
                 ],
               ),
             ),
             
-            // Progress bar
-            Container(
-              padding: const EdgeInsets.all(24),
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Şəxsi Məlumatlar',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      Text(
-                        '1/4',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: LinearProgressIndicator(
-                      value: 0.25,
-                      backgroundColor: AppColors.gray200,
-                      valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
-                      minHeight: 8,
-                    ),
-                  ),
-                ],
+            // Progress Section
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: OnboardingProgressBar(
+                progress: 0.25,
+                stepText: 'Şəxsi Məlumatlar',
+                currentStep: '1/4',
               ),
             ),
             
-            // Form
+            // Form Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(24),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 400),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Xoş gəlmisiniz',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Zəhmət olmasa şəxsi məlumatlarınızı daxil edin',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.textSecondary,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Name field
-                      _buildTextField(
-                        label: 'Adınız',
-                        hint: 'Adınızı daxil edin',
-                        controller: _nameController,
-                      ),
-                      
-                      const SizedBox(height: 16),
-                      
-                      // Surname field
-                      _buildTextField(
-                        label: 'Soyadınız',
-                        hint: 'Soyadınızı daxil edin',
-                        controller: _surnameController,
-                      ),
-                      
-                      const SizedBox(height: 16),
-                      
-                      // Phone field
-                      _buildTextField(
-                        label: 'Əlaqə nömrəsi',
-                        hint: '+994 (__) ___-__-__',
-                        controller: _phoneController,
-                        keyboardType: TextInputType.phone,
-                        prefixIcon: Icons.phone,
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Next button
-                      PrimaryButton(
-                        label: 'Növbəti',
-                        suffixIcon: Icons.arrow_forward,
-                        onPressed: () => context.push(AppRoutes.registerVerify),
-                      ),
-                      
-                      const SizedBox(height: 24),
-                      
-                      // Login link
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Hesabınız var? ',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: AppColors.textSecondary,
-                            ),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 400),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 32),
+                        Text(
+                          'Xoş gəlmisiniz',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.textPrimary,
+                            letterSpacing: -0.5,
                           ),
-                          TextButton(
-                            onPressed: () => context.go(AppRoutes.login),
-                            child: const Text(
-                              'Daxil olun',
-                              style: TextStyle(
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Zəhmət olmasa şəxsi məlumatlarınızı daxil edin',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 16,
+                            color: AppColors.textSecondary,
+                            height: 1.5,
+                          ),
+                        ),
+                        
+                        const SizedBox(height: 40),
+                        
+                        // Input Fields
+                        _buildInputField(
+                          label: 'Adınız',
+                          hint: 'Adınızı daxil edin',
+                          controller: _nameController,
+                        ),
+                        const SizedBox(height: 24),
+                        _buildInputField(
+                          label: 'Soyadınız',
+                          hint: 'Soyadınızı daxil edin',
+                          controller: _surnameController,
+                        ),
+                        const SizedBox(height: 24),
+                        _buildInputField(
+                          label: 'Əlaqə nömrəsi',
+                          hint: '+994 (__) ___-__-__',
+                          controller: _phoneController,
+                          keyboardType: TextInputType.phone,
+                          prefixIcon: Icons.phone_outlined,
+                        ),
+                        
+                        const SizedBox(height: 48),
+                        
+                        // Action Button
+                        ElevatedButton(
+                          onPressed: () => context.push(AppRoutes.registerVerify),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 18),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            elevation: 0,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Növbəti',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              const Icon(Icons.arrow_forward, size: 20),
+                            ],
+                          ),
+                        ),
+                        
+                        const SizedBox(height: 32),
+                        
+                        // Login Link
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Hesabınız var? ',
+                              style: GoogleFonts.inter(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.primary,
+                                color: AppColors.textSecondary,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            GestureDetector(
+                              onTap: () => context.go(AppRoutes.login),
+                              child: Text(
+                                'Daxil olun',
+                                style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 32),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -208,7 +192,7 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
     );
   }
 
-  Widget _buildTextField({
+  Widget _buildInputField({
     required String label,
     required String hint,
     required TextEditingController controller,
@@ -218,36 +202,42 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: AppColors.textPrimary,
+        Padding(
+          padding: const EdgeInsets.only(left: 4, bottom: 8),
+          child: Text(
+            label,
+            style: GoogleFonts.inter(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textPrimary,
+            ),
           ),
         ),
-        const SizedBox(height: 8),
         TextField(
           controller: controller,
           keyboardType: keyboardType,
+          style: GoogleFonts.inter(fontSize: 16),
           decoration: InputDecoration(
             hintText: hint,
+            hintStyle: GoogleFonts.inter(color: AppColors.textTertiary),
             filled: true,
             fillColor: Colors.white,
-            prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: AppColors.textSecondary) : null,
+            prefixIcon: prefixIcon != null 
+                ? Icon(prefixIcon, color: AppColors.textSecondary, size: 22) 
+                : null,
+            contentPadding: const EdgeInsets.all(20),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.borderLight),
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(color: AppColors.borderLight, width: 1.5),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.borderLight),
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(color: AppColors.borderLight, width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: AppColors.primary, width: 2),
             ),
-            contentPadding: const EdgeInsets.all(16),
           ),
         ),
       ],
