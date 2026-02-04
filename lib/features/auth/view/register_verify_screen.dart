@@ -129,7 +129,7 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
                         const SizedBox(height: 56),
                         
                         // Action Button
-                        Container(
+                        SizedBox(
                           height: 56,
                           child: ElevatedButton(
                             onPressed: () => context.push(AppRoutes.registerBusinessType),
