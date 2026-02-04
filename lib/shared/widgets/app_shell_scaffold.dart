@@ -71,7 +71,7 @@ class SideNavDrawer extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: AppColors.primary.withOpacity(0.1),
+                      color: AppColors.primary.withValues(alpha: 26),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Icon(
@@ -166,7 +166,7 @@ class _DrawerNavItem extends StatelessWidget {
         ),
       ),
       selected: isSelected,
-      selectedTileColor: AppColors.primary.withOpacity(0.08),
+      selectedTileColor: AppColors.primary.withValues(alpha: 20),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),

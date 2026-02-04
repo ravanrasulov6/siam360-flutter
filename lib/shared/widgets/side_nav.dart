@@ -30,7 +30,7 @@ class SideNav extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.1),
+                    color: AppColors.primary.withValues(alpha: 26),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Icon(
@@ -116,7 +116,7 @@ class SideNav extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 18,
-                  backgroundColor: AppColors.primary.withOpacity(0.1),
+                  backgroundColor: AppColors.primary.withValues(alpha: 26),
                   child: const Text(
                     'K',
                     style: TextStyle(
@@ -183,7 +183,7 @@ class _SideNavItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           decoration: BoxDecoration(
-            color: isSelected ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
+            color: isSelected ? AppColors.primary.withValues(alpha: 26) : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(

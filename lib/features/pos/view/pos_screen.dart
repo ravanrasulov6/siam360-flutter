@@ -70,7 +70,7 @@ class _PosScreenState extends ConsumerState<PosScreen> {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 13),
                 blurRadius: 8,
                 offset: const Offset(0, -2),
               ),
@@ -209,7 +209,7 @@ class _PosScreenState extends ConsumerState<PosScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                     decoration: BoxDecoration(
-                      color: AppColors.primary.withOpacity(0.1),
+                      color: AppColors.primary.withValues(alpha: 26),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
@@ -358,14 +358,14 @@ class _PosScreenState extends ConsumerState<PosScreen> {
                             'Nağd',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: 204),
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8),
                             width: 1,
                             height: 16,
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha: 77),
                           ),
                           Text(
                             '${_total.toStringAsFixed(2)} ₼',

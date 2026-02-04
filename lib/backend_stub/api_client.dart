@@ -1,7 +1,7 @@
-/// Backend API client stub
-/// 
-/// This is a placeholder for future backend integration.
-/// Replace with actual implementation when connecting to real API.
+// Backend API client stub
+// 
+// This is a placeholder for future backend integration.
+// Replace with actual implementation when connecting to real API.
 
 import 'dart:async';
 

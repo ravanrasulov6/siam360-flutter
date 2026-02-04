@@ -25,7 +25,7 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveIconColor = iconColor ?? AppColors.primary;
-    final effectiveIconBgColor = iconBackgroundColor ?? AppColors.primary.withOpacity(0.1);
+    final effectiveIconBgColor = iconBackgroundColor ?? AppColors.primary.withValues(alpha: 26);
     
     return Container(
       padding: const EdgeInsets.all(16),
@@ -35,7 +35,7 @@ class StatCard extends StatelessWidget {
         border: Border.all(color: AppColors.borderLight),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withValues(alpha: 8),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

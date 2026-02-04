@@ -173,7 +173,7 @@ class DashboardScreen extends StatelessWidget {
                     Icon(
                       Icons.expand_more,
                       size: 18,
-                      color: AppColors.primary,
+                      color: AppColors.primary, 
                     ),
                   ],
                 ),
@@ -282,7 +282,7 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: 16),
           _comparisonRow('Elektron.', 0.20),
           const SizedBox(height: 24),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: OutlinedButton(
               onPressed: () {},
@@ -479,8 +479,8 @@ class _ChartPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppColors.primary.withOpacity(0.2),
-          AppColors.primary.withOpacity(0),
+          AppColors.primary.withValues(alpha: 51),
+          AppColors.primary.withValues(alpha: 0),
         ],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
 

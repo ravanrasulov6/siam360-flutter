@@ -209,14 +209,14 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
         boxShadow: _focusNodes[index].hasFocus 
             ? [
                 BoxShadow(
-                  color: AppColors.primary.withOpacity(0.12),
+                  color: AppColors.primary.withValues(alpha: 31),
                   blurRadius: 16,
                   offset: const Offset(0, 4),
                 )
               ]
             : [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
+                  color: Colors.black.withValues(alpha: 10),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 )

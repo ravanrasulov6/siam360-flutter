@@ -123,13 +123,13 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: Colors.black.withValues(alpha: 10),
                     blurRadius: 10,
                     offset: const Offset(0, -4),
                   ),
                 ],
               ),
-              child: Container(
+              child: SizedBox(
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () => context.push(AppRoutes.registerBusinessSize),
@@ -175,8 +175,8 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
           boxShadow: [
             BoxShadow(
               color: isSelected 
-                  ? AppColors.primary.withOpacity(0.12)
-                  : Colors.black.withOpacity(0.04),
+                  ? AppColors.primary.withValues(alpha: 31)
+                  : Colors.black.withValues(alpha: 10),
               blurRadius: isSelected ? 16 : 8,
               offset: const Offset(0, 4),
             )

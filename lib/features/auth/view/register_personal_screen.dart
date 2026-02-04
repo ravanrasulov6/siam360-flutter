@@ -125,7 +125,7 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
                         const SizedBox(height: 48),
                         
                         // Action Button
-                        Container(
+                        SizedBox(
                           height: 56,
                           child: ElevatedButton(
                             onPressed: () => context.push(AppRoutes.registerVerify),

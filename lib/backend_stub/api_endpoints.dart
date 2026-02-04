@@ -1,6 +1,6 @@
-/// API endpoints constants
-/// 
-/// Placeholder endpoint paths for future backend integration.
+// API endpoints constants
+// 
+// Placeholder endpoint paths for future backend integration.
 
 class ApiEndpoints {
   ApiEndpoints._();

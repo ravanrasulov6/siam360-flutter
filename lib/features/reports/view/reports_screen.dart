@@ -51,7 +51,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
                           boxShadow: isSelected
                               ? [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.05),
+                                    color: Colors.black.withValues(alpha: 13),
                                     blurRadius: 4,
                                   ),
                                 ]

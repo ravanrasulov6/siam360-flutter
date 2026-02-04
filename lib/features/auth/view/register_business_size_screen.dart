@@ -104,7 +104,7 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
                     // Complete Action Section
                     Padding(
                       padding: const EdgeInsets.only(bottom: 32),
-                      child: Container(
+                      child: SizedBox(
                         height: 56,
                         child: ElevatedButton(
                           onPressed: () => context.go(AppRoutes.dashboard),
@@ -146,7 +146,7 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
         height: 64,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary.withOpacity(0.06) : Colors.white,
+          color: isSelected ? AppColors.primary.withValues(alpha: 15) : Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.gray200,
@@ -154,7 +154,7 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.04),
+              color: Colors.black.withValues(alpha: 10),
               blurRadius: 10,
               offset: const Offset(0, 2),
             )

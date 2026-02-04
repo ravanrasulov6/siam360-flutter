@@ -112,7 +112,7 @@ class _ReservationsScreenState extends ConsumerState<ReservationsScreen> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: isSelected ? Colors.white.withOpacity(0.8) : AppColors.textSecondary,
+                              color: isSelected ? Colors.white.withValues(alpha: 204) : AppColors.textSecondary,
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -200,7 +200,7 @@ class _ReservationCard extends StatelessWidget {
             width: 60,
             padding: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
+              color: AppColors.primary.withValues(alpha: 26),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Column(
@@ -217,7 +217,7 @@ class _ReservationCard extends StatelessWidget {
                   reservation.duration,
                   style: TextStyle(
                     fontSize: 12,
-                    color: AppColors.primary.withOpacity(0.8),
+                    color: AppColors.primary.withValues(alpha: 204),
                   ),
                 ),
               ],

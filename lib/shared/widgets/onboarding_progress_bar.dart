@@ -45,7 +45,7 @@ class OnboardingProgressBar extends StatelessWidget {
                       borderRadius: BorderRadius.circular(999),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.primary.withOpacity(0.15),
+                          color: AppColors.primary.withValues(alpha: 38),
                           blurRadius: 10,
                           offset: const Offset(0, 2),
                         ),
