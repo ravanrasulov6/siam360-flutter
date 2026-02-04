@@ -31,8 +31,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Run Flutter analyze
-        run: flutter analyze || true
+      - name: Clean build environment
+        run: |
+          flutter clean
+          rm -rf ~/.gradle/caches
+          flutter pub get
 
       - name: Build release APK
         run: flutter build apk --release --build-number ${{ github.run_number }}
