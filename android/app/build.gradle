@@ -1,14 +1,14 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    id "org.jetbrains.kotlin.android"
     id "dev.flutter.flutter-gradle-plugin"
 }
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
-    localPropertiesFile.withInputStream { stream ->
-        localProperties.load(stream)
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
     }
 }
 
@@ -24,16 +24,16 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.siam360.siam360"
-    compileSdk flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdk 34
+    ndkVersion "26.1.10909125"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     sourceSets {
@@ -42,16 +42,14 @@ android {
 
     defaultConfig {
         applicationId "com.siam360.siam360"
-        minSdk flutter.minSdkVersion
-        targetSdk flutter.targetSdkVersion
+        minSdk 23
+        targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
     }
@@ -60,4 +58,3 @@ android {
 flutter {
     source '../..'
 }
-
