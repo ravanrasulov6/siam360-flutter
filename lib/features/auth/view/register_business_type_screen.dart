@@ -60,10 +60,9 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
             // Progress Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: OnboardingProgressBar(
-                progress: 0.75,
-                stepText: 'Biznes növü',
-                currentStep: '3/4',
+              child: const OnboardingProgressBar(
+                currentStep: 3,
+                label: 'Biznes növü',
               ),
             ),
             
@@ -80,7 +79,7 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
                       style: GoogleFonts.inter(
                         fontSize: 28,
                         fontWeight: FontWeight.w800,
-                        color: AppColors.textPrimary,
+                        color: AppColors.gray900,
                         letterSpacing: -0.5,
                       ),
                     ),
@@ -88,8 +87,8 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
                     Text(
                       'Sizə daha yaxşı təcrübə təqdim etmək üçün fəaliyyət sahənizi qeyd edin.',
                       style: GoogleFonts.inter(
-                        fontSize: 16,
-                        color: AppColors.textSecondary,
+                        fontSize: 15,
+                        color: AppColors.gray700,
                         height: 1.5,
                       ),
                     ),
@@ -103,7 +102,7 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
                           crossAxisCount: 2,
                           mainAxisSpacing: 16,
                           crossAxisSpacing: 16,
-                          childAspectRatio: 1.05,
+                          childAspectRatio: 1.0,
                         ),
                         itemCount: _businessTypes.length,
                         itemBuilder: (context, index) {
@@ -130,22 +129,24 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
                   ),
                 ],
               ),
-              child: ElevatedButton(
-                onPressed: () => context.push(AppRoutes.registerBusinessSize),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 18),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+              child: Container(
+                height: 56,
+                child: ElevatedButton(
+                  onPressed: () => context.push(AppRoutes.registerBusinessSize),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 0,
                   ),
-                  elevation: 0,
-                ),
-                child: Text(
-                  'Davam et',
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                  child: Text(
+                    'Davam et',
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),
@@ -165,52 +166,56 @@ class _RegisterBusinessTypeScreenState extends State<RegisterBusinessTypeScreen>
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.white.withOpacity(0.6),
-          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
           border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.borderLight,
-            width: isSelected ? 2 : 1.5,
+            color: isSelected ? AppColors.primary : AppColors.gray200,
+            width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected 
-              ? [
-                  BoxShadow(
-                    color: AppColors.primary.withOpacity(0.12),
-                    blurRadius: 12,
-                    offset: const Offset(0, 6),
-                  )
-                ]
-              : null,
+          boxShadow: [
+            BoxShadow(
+              color: isSelected 
+                  ? AppColors.primary.withOpacity(0.12)
+                  : Colors.black.withOpacity(0.04),
+              blurRadius: isSelected ? 16 : 8,
+              offset: const Offset(0, 4),
+            )
+          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                color: isSelected ? AppColors.primary : AppColors.backgroundLight,
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                type.icon,
-                color: isSelected ? Colors.white : AppColors.textSecondary,
-                size: 26,
-              ),
+            Icon(
+              type.icon,
+              color: isSelected ? AppColors.primary : AppColors.gray600,
+              size: 28,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Text(
                 type.label,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                  color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? AppColors.gray900 : AppColors.gray700,
                 ),
               ),
             ),
+            if (isSelected)
+              Positioned(
+                top: 8,
+                right: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    color: AppColors.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.check, size: 10, color: Colors.white),
+                ),
+              ),
           ],
         ),
       ),

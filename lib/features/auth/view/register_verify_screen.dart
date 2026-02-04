@@ -75,10 +75,9 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
             // Progress Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: OnboardingProgressBar(
-                progress: 0.5,
-                stepText: 'Təsdiqləmə',
-                currentStep: '2/4',
+              child: const OnboardingProgressBar(
+                currentStep: 2,
+                label: 'Təsdiqləmə',
               ),
             ),
             
@@ -99,50 +98,55 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
                           style: GoogleFonts.inter(
                             fontSize: 28,
                             fontWeight: FontWeight.w800,
-                            color: AppColors.textPrimary,
+                            color: AppColors.gray900,
                             letterSpacing: -0.5,
                           ),
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          'Zəhmət olmasa mobil nömrənizə göndərilən 6 rəqəmli kodu daxil edin.',
+                          'Telefon nömrənizə göndərilən kodu daxil edin',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.inter(
-                            fontSize: 16,
-                            color: AppColors.textSecondary,
+                            fontSize: 15,
+                            color: AppColors.gray700,
                             height: 1.5,
                           ),
                         ),
                         
-                        const SizedBox(height: 56),
+                        const SizedBox(height: 48),
                         
                         // OTP input fields
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(6, (index) {
-                            return _buildOtpField(index);
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 4),
+                              child: _buildOtpField(index),
+                            );
                           }),
                         ),
                         
                         const SizedBox(height: 56),
                         
                         // Action Button
-                        ElevatedButton(
-                          onPressed: () => context.push(AppRoutes.registerBusinessType),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primary,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 18),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                        Container(
+                          height: 56,
+                          child: ElevatedButton(
+                            onPressed: () => context.push(AppRoutes.registerBusinessType),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primary,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              elevation: 0,
                             ),
-                            elevation: 0,
-                          ),
-                          child: Text(
-                            'Təsdiqlə',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
+                            child: Text(
+                              'Təsdiqlə',
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                         ),
@@ -193,24 +197,30 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
 
   Widget _buildOtpField(int index) {
     return Container(
-      width: 52,
-      height: 64,
+      width: 48,
+      height: 52,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: _focusNodes[index].hasFocus ? AppColors.primary : AppColors.borderLight,
-          width: _focusNodes[index].hasFocus ? 2 : 1.5,
+          color: _focusNodes[index].hasFocus ? AppColors.primary : AppColors.gray200,
+          width: _focusNodes[index].hasFocus ? 2 : 1,
         ),
         boxShadow: _focusNodes[index].hasFocus 
             ? [
                 BoxShadow(
-                  color: AppColors.primary.withOpacity(0.15),
-                  blurRadius: 8,
+                  color: AppColors.primary.withOpacity(0.12),
+                  blurRadius: 16,
                   offset: const Offset(0, 4),
                 )
               ]
-            : null,
+            : [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 10,
+                  offset: const Offset(0, 2),
+                )
+              ],
       ),
       child: Center(
         child: TextField(
@@ -220,9 +230,9 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
           keyboardType: TextInputType.number,
           maxLength: 1,
           style: GoogleFonts.inter(
-            fontSize: 24,
-            fontWeight: FontWeight.w800,
-            color: AppColors.textPrimary,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: AppColors.gray900,
           ),
           decoration: const InputDecoration(
             counterText: '',
@@ -234,7 +244,7 @@ class _RegisterVerifyScreenState extends State<RegisterVerifyScreen> {
           ],
           onChanged: (value) {
             _onCodeChanged(index, value);
-            setState(() {}); // Trigger rebuild to update border color/shadow
+            setState(() {});
           },
         ),
       ),

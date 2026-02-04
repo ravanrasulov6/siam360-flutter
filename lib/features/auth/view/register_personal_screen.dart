@@ -61,10 +61,9 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
             // Progress Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: OnboardingProgressBar(
-                progress: 0.25,
-                stepText: 'Şəxsi Məlumatlar',
-                currentStep: '1/4',
+              child: const OnboardingProgressBar(
+                currentStep: 1,
+                label: 'Şəxsi Məlumatlar',
               ),
             ),
             
@@ -85,7 +84,7 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
                           style: GoogleFonts.inter(
                             fontSize: 28,
                             fontWeight: FontWeight.w800,
-                            color: AppColors.textPrimary,
+                            color: AppColors.gray900,
                             letterSpacing: -0.5,
                           ),
                         ),
@@ -94,13 +93,13 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
                           'Zəhmət olmasa şəxsi məlumatlarınızı daxil edin',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.inter(
-                            fontSize: 16,
-                            color: AppColors.textSecondary,
+                            fontSize: 15, // Refined size
+                            color: AppColors.gray700,
                             height: 1.5,
                           ),
                         ),
                         
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 44),
                         
                         // Input Fields
                         _buildInputField(
@@ -108,13 +107,13 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
                           hint: 'Adınızı daxil edin',
                           controller: _nameController,
                         ),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 20),
                         _buildInputField(
                           label: 'Soyadınız',
                           hint: 'Soyadınızı daxil edin',
                           controller: _surnameController,
                         ),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 20),
                         _buildInputField(
                           label: 'Əlaqə nömrəsi',
                           hint: '+994 (__) ___-__-__',
@@ -126,30 +125,32 @@ class _RegisterPersonalScreenState extends State<RegisterPersonalScreen> {
                         const SizedBox(height: 48),
                         
                         // Action Button
-                        ElevatedButton(
-                          onPressed: () => context.push(AppRoutes.registerVerify),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primary,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 18),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            elevation: 0,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Növbəti',
-                                style: GoogleFonts.inter(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                        Container(
+                          height: 56,
+                          child: ElevatedButton(
+                            onPressed: () => context.push(AppRoutes.registerVerify),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primary,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
                               ),
-                              const SizedBox(width: 8),
-                              const Icon(Icons.arrow_forward, size: 20),
-                            ],
+                              elevation: 0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Növbəti',
+                                  style: GoogleFonts.inter(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                const Icon(Icons.arrow_forward, size: 20),
+                              ],
+                            ),
                           ),
                         ),
                         

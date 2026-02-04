@@ -57,10 +57,9 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
             // Progress Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: OnboardingProgressBar(
-                progress: 1.0,
-                stepText: 'Son mərhələ',
-                currentStep: '4/4',
+              child: const OnboardingProgressBar(
+                currentStep: 4,
+                label: 'Son mərhələ',
               ),
             ),
             
@@ -77,7 +76,7 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
                       style: GoogleFonts.inter(
                         fontSize: 28,
                         fontWeight: FontWeight.w800,
-                        color: AppColors.textPrimary,
+                        color: AppColors.gray900,
                         letterSpacing: -0.5,
                       ),
                     ),
@@ -85,8 +84,8 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
                     Text(
                       'Bu məlumat sizə uyğun paneli hazırlamaq üçün lazımdır',
                       style: GoogleFonts.inter(
-                        fontSize: 16,
-                        color: AppColors.textSecondary,
+                        fontSize: 15,
+                        color: AppColors.gray700,
                         height: 1.5,
                       ),
                     ),
@@ -105,26 +104,25 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
                     // Complete Action Section
                     Padding(
                       padding: const EdgeInsets.only(bottom: 32),
-                      child: ElevatedButton(
-                        onPressed: () => context.go(AppRoutes.dashboard),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
+                      child: Container(
+                        height: 56,
+                        child: ElevatedButton(
+                          onPressed: () => context.go(AppRoutes.dashboard),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            elevation: 0,
                           ),
-                          elevation: 4,
-                          shadowColor: AppColors.primary.withOpacity(0.3),
-                        ).copyWith(
-                          overlayColor: WidgetStateProperty.all(Colors.white.withOpacity(0.1)),
-                        ),
-                        child: Text(
-                          'Tamamla',
-                          style: GoogleFonts.inter(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 0.5,
+                          child: Text(
+                            'Tamamla',
+                            style: GoogleFonts.inter(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.5,
+                            ),
                           ),
                         ),
                       ),
@@ -145,50 +143,32 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         margin: const EdgeInsets.only(bottom: 16),
-        padding: const EdgeInsets.all(20),
+        height: 64,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isSelected ? AppColors.primary.withOpacity(0.06) : Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.borderLight,
-            width: isSelected ? 2 : 1.5,
+            color: isSelected ? AppColors.primary : AppColors.gray200,
+            width: isSelected ? 2 : 1,
           ),
-          boxShadow: isSelected 
-              ? [
-                  BoxShadow(
-                    color: AppColors.primary.withOpacity(0.08),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  )
-                ]
-              : [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.02),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  )
-                ],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            )
+          ],
         ),
         child: Row(
           children: [
-            Expanded(
-              child: Text(
-                _volumeOptions[index],
-                style: GoogleFonts.inter(
-                  fontSize: 16,
-                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                  color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
-                ),
-              ),
-            ),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
+            Container(
               width: 24,
               height: 24,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isSelected ? AppColors.primary : AppColors.borderLight,
+                  color: isSelected ? AppColors.primary : AppColors.gray300,
                   width: 2,
                 ),
                 color: isSelected ? AppColors.primary : Colors.transparent,
@@ -202,6 +182,17 @@ class _RegisterBusinessSizeScreenState extends State<RegisterBusinessSizeScreen>
                       ),
                     )
                   : null,
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                _volumeOptions[index],
+                style: GoogleFonts.inter(
+                  fontSize: 16,
+                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                  color: isSelected ? AppColors.gray900 : AppColors.gray700,
+                ),
+              ),
             ),
           ],
         ),
